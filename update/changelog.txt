@@ -1,0 +1,181 @@
+#1.0.1
+- Fixed css ads
+- Set "production" profile (Disable error report)
+- Improved security
+- Added Latest and Top Sites
+- Added Contact Form
+
+#1.0.2
+- Fixed header.php bug
+- Added cloud keywords
+- Added keyword Consistency
+- Added completed flag
+- Fixed minor bugs
+
+#1.0.3
+- Fixed W3C Errors
+- Added latest updated on home page
+- Fixed some errors
+- Added server information block (Header, IP server, DNS Records, IP Information)
+- Added technologies list page
+- Added country list page
+- Added city list page
+- Added region list page
+- Added isp list page
+- Added meta keywords list page
+- Auto hide ads if the site has bad words
+
+#1.0.4
+- Fixed bug tag filter page
+- Added bulk website
+- Added "completed website" option admin
+- Added Page speed mobile
+- Added AMP checker
+
+#1.0.5
+- Fixed bug installation module
+- Fixed bug domain authority (Mozscape API)
+- Added custom user agent
+- Improved GUI
+- Added page authority
+- Added dasboard changelog
+- Added Moz Rank
+
+#1.0.6 
+- Improved GUI
+- Fixed bug filter pagination
+- Fixed error curl using follow_location
+- Force to register users
+- Hidden feature to guest
+- Improved Dashboard
+- Added option for list and delete website [Dashboard]
+- Added demo account for dashboard
+- Fixed bug on register
+- Added background process for incomplete scan
+- Improved algorithm score calculator
+- Added module for automatic email report
+
+#1.0.7
+- Added effective URL
+- Added excerpt 
+- Fixed minors bugs
+- Fixed bug installation
+- Added AutoScan site when score <= 0
+
+#1.0.8
+- Fixed bug sitemap
+- Fixed bug lowercase google preview
+- Added domain age information
+- Fixed SSL
+- Added widget top technologies
+- Added pagination sitemap (/sitemap.xml?p=[PAGE])
+- Added edit site
+- Fixed bug charset encoding
+
+#1.0.9 
+- Fixed bug technologies
+- Added option to export users to CSV File
+- Added option to export sites to CSV File
+- Added option for custom service screenshot
+- Added option for download screenshot to server (HTTPS Compatibility)
+- Added description in process modules
+- Added edit user on admin panel
+- Improved bulk upload (Now support up 10,000 sites)
+
+#1.1.0
+- Fixed bug update user
+- Added charset validation
+- Fixed bug not UTF-8 encoding
+- Added Text/Code ratio
+
+#1.1.1
+- Add h1 tag in some pages
+- Fixed bug "AGO" function
+- Fixed bug duplicated domain bulk
+- Added custom code header field
+
+#1.1.2 
+- Fixed bug titles
+- Fixed bug metaTitle
+- Fixed bug incomplete scan (background Process and Admin Process)
+- Add validation bulk for duplicated (Reported by @naveedlodhi)
+- Custom Size top (Customize limit top)
+- Added Home page (Top Tecnologies)
+- Added Home page (Top Web Servers)
+- Added Home page (Top Web Frameworks)
+
+#1.1.3
+- Updated api pagespeed v1 to v2
+- Added comment block on review page
+- Added option Enable/Disable Block
+- Added option Enable/Disable Email verification on register
+- Fixed minors bugs
+
+#1.1.4
+- Fixed bug block pagespeed
+
+#2.0
+- Fixed bug title utf8 encode
+- Fixed bug badwords adsense
+- Fixed bug sitemap (Now support Gzip)
+- Improved Pagespeed API
+- Added Google PageSpeed Insights
+- Added screenshot desktop from google api
+- Added screenshot mobile from google api
+- Improved bookmarks
+- Improved UI/UX
+- Added menu sitemap admin panel
+- Added cronjob menu
+- Added process limit option
+- Added history log menu 
+- Added company info 
+- Added PDF Export option
+
+#2.1.0
+- Improved UI/UX
+- Added historical data (save snapshot one per day max)
+- Webcache system
+- Added subscription system with paypal
+	- SingUp
+	- Upgrade
+	- Downgrade
+	- Cancellation
+	- Fail
+	- Chargeback
+	- Billing (Monthly and Yearly)
+- Upgrade/Downgrade account using admin panel
+- Auto upgrade/downgrade account when make payment
+#2.1.1
+- Added more info for broken link cheker
+- Added process old website
+- Improved DNS Records 
+- Added Social data block
+- Added Domain available block
+- Improved UI/UX
+- Add background process (Curl Support)
+
+#2.1.2
+- Fixed bug token background process
+- Added option for use google screenshot
+
+#2.1.3
+- Improve speed PDF
+- Added Affiliate domain program
+- Added Notifications module (Send a email to admin triggers)
+	- New user
+	- New Site
+	- Updated Site
+- Added new option to enable/disable historical data
+
+#2.2.0DEV
+- Added option for change home background
+- Added option for change modal background
+- Added chrome extension generator
+- Added inline installation chrome extension
+- Fixed translation phrase google pagespeed
+- Added social count to PDF report
+- Added option chart border size
+- Added option for custom colors style (Links, Background, Text...)
+- Added google font family support
+- Added new report email template
+

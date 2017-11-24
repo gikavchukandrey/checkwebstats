@@ -1,0 +1,16 @@
+Admin Zugangsdaten zum Einloggen (wird an sich nicht gebraucht):
+
+1admin1
+LJHS93ka“$saJAK
+
+1. Datenbank erstellen und DB.sql importieren (hier im Hauptverzeichnis)
+2. In application/views/pages/review.php, Zeile 325 neue DBDaten eintragen
+3. In application/config/database.php neue DB Daten eintragen
+
+Das war es soweit. Man kann von der Startseite aus eine URL eingeben und diese wird dann analysiert. Falls der Merchant bei Yadore vorhanden ist, dann werden von dort offer eingespielt.
+Die Similar Sites werden durch das YK Snippet mit TrackingLinks versehen.
+Nun sagt vielleicht Merchant "A.com", dass er super gerne zu sehen wäre, wenn ein user die  Analyseseite von "B.com" aufruft. In dem Fall kann man in der Datenbank, Tabelle px_sites, in der Spalte "similarSites" einfach "B.com" hinzufügen.
+
+Ich habe schonmal jede Menge Daten eingepflegt. Sollte ein bisschen reichen :)
+
+Einzige Frage ist noch nach dem Impressum. Ob wir erstmal weglassen oder wie auch immer ^^
