@@ -1,16 +1,16 @@
-<?php	
+<?php
 	$noADS = hasbadWords($site->body." ".$site->metaTitle. " ".$site->metaDescription." ".$site->metaKeywords);
 	$blocks = explode(",",config_item("guest_block"));
 	$modules = explode(",",config_item("enable_block"));
 
 	if(is_logged())
-	{	
+	{
 		$temp = explode(",",config_item("paypal_p"._user("plan")."_modules"));
-		
+
 		$blocks= array();
 		$blocks = $temp;
 
-		/*$blocks[] ='traffic';	    
+		/*$blocks[] ='traffic';
 	    $blocks[] ='tips';
 	    $blocks[] ='alexa';
 	    $blocks[] ='server';
@@ -21,7 +21,7 @@
 	    $blocks[] ='technologies';*/
 	}
 
-	
+
 
 ?>
 <!--<img src="data:image/jpeg;base64, <?php echo $image; ?>">-->
@@ -46,34 +46,34 @@
 						<h2 class="small text-xs-center"><?php echo __("Your Website Score is"); ?></h2>
 
 						<div class=" circle" data-color="<?php echo config_item("style_main_color"); ?>" data-text="<?php echo __("Score Rank"); ?>"  data-fbw="<?php echo config_item("chart_border_size"); ?>" data-bbw="<?php echo config_item("chart_border_size"); ?>" data-color="#4390BE" data-percent="<?php echo $site->score; ?> "></div>
-						
-						<?php 
+
+						<?php
 						$days			= getDaysDiff($site->updated,date("Y-m-d H:i:s"));
 
 						if(intval($days) >= intval(config_item("update_inverval")) && !$cached)
 						{
 							?><button class="btn btn-secondary btn-sm btn-block btn-update " data-domain="<?php echo $site->url; ?>"><i class="zmdi zmdi-refresh-alt"></i> <?php echo __("Update"); ?></button><?php
-								
+
 						}
 						?>
-						
+
 
 				</div>
 
 
-			
-				<?php 
+
+				<?php
 					if(!$noADS)
-						echo get_ads("ads1","text-xs-center ads card card-block no-padding p-b-1 p-t-1"); 
+						echo get_ads("ads1","text-xs-center ads card card-block no-padding p-b-1 p-t-1");
 					else
 						echo  "<!-- Note: Bad words detected disable ads for security reasons -->";
 				?>
-				
-			
+
+
 			<?php if(count($similar)>1){ ?>
 			<div class="card card-block hidden-sm-down">
 				<h2 class="small  p-b-1"><?php echo __("Similar Ranking"); ?></h2>
-				<?php foreach ($similar as $key => $value){ 
+				<?php foreach ($similar as $key => $value){
 					if($value->id != $site->id){
 					?>
 				<div class="site-list">
@@ -83,14 +83,14 @@
 						<a href="<?php echo base_url(); ?><?php echo $value->url; ?>" class="subtitle truncate"><?php echo badWords($value->url); ?></a>
 					</div>
 				</div>
-				<?php } } ?>				
+				<?php } } ?>
 			</div>
 			<?php } ?>
 
 			<?php if(count($historicalData)>=1){ ?>
 			<div class="card card-block">
 				<h2 class="small  p-b-1"><?php echo __("Historical Data"); ?></h2>
-				<?php foreach ($historicalData as $key => $value){ 
+				<?php foreach ($historicalData as $key => $value){
 					$old = json_decode($value->data);
 					?>
 				<div class="site-list <?php if($cached == date("Y-m-d",strtotime($value->created))){ echo 'active'; } ?>">
@@ -103,15 +103,15 @@
 						<a href="<?php echo base_url(); ?><?php echo $old->url; ?>?d=<?php echo date("Y-m-d",strtotime($value->created)); ?>" class="subtitle truncate"><?php echo date("Y-m-d",strtotime($value->created)); ?></a>
 					</div>
 				</div>
-				<?php }  ?>	
-				<a class="d-block m-t-1 text-xs-center" href="<?php echo base_url(); ?><?php echo config_item("slug_historical"); ?>/<?php echo $site->url; ?>"><?php echo __("View all historical data"); ?></a>			
+				<?php }  ?>
+				<a class="d-block m-t-1 text-xs-center" href="<?php echo base_url(); ?><?php echo config_item("slug_historical"); ?>/<?php echo $site->url; ?>"><?php echo __("View all historical data"); ?></a>
 			</div>
 			<?php } ?>
 
-			<?php if(count($recents)>1){ ?> 
+			<?php if(count($recents)>1){ ?>
 			<div class="card card-block hidden-sm-down">
 				<h2 class="small p-b-1"><?php echo __("Latest Sites"); ?></h2>
-				<?php foreach ($recents as $key => $value){ 
+				<?php foreach ($recents as $key => $value){
 					if($value->id != $site->id){
 						if(!$value->metaTitle)
 							$value->metaTitle = '-';
@@ -123,15 +123,15 @@
 						<a href="<?php echo base_url(); ?><?php echo $value->url; ?>" class="subtitle truncate"><?php echo badWords($value->url); ?></a>
 					</div>
 				</div>
-				<?php } } ?>				
+				<?php } } ?>
 			</div>
-			<?php } ?>	
+			<?php } ?>
 
 			<?php if(count($top['technologies'])>1){ ?>
 			<div class="card card-block hidden-sm-down">
 				<h2 class="small p-b-1"><?php echo __("Top Technologies"); ?></h2>
-				<?php foreach ($top['technologies'] as $key => $value){ 
-					
+				<?php foreach ($top['technologies'] as $key => $value){
+
 					?>
 				<div class="site-list">
 					<div class="score">
@@ -142,13 +142,13 @@
 						<a href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/<?php echo config_item("slug_made_with"); ?>/<?php echo urlencode($value->name); ?>" class="subtitle truncate"><?php echo ($value->tag1); ?></a>
 					</div>
 				</div>
-				<?php }  ?>				
+				<?php }  ?>
 			</div>
 			<?php } ?>
 
 		</div>
 		<?php
-##yadore integration		
+##yadore integration
 
 function getMerchants($market){
 global $allMerchants;
@@ -191,7 +191,7 @@ $resp = curl_exec($ch);
 				$merchantId = $json->{'response'}->{'merchants'}[$i]->{'id'};
 				$merchantUrl = $merchantName;
 				$offerCount = $json->{'response'}->{'merchants'}[$i]->{'offerCount'};
-				if ($merchantName){				
+				if ($merchantName){
 					$allMerchants[$merchantUrl]['url'] = $merchantUrl;
 					$allMerchants[$merchantUrl]['id'] = $merchantId;
 					$allMerchants[$merchantUrl]['market'] = $market;
@@ -229,39 +229,39 @@ if ($merchantId){
 	$offset = $offerCount / 20;
 	$offset = floor($offset);
 	$offset = $offset - 1;
-	$offset = mt_rand(0,$offset);	
-	
+	$offset = mt_rand(0,$offset);
+
 	//getOffers
-	
+
 		// Get cURL resource
 		$ch = curl_init();
-		
+
 		// Set url
 		curl_setopt($ch, CURLOPT_URL, "https://api.Yadore.com/v1/offer?market=$merchantMarket&merchantId=$merchantId&offset=$offset");
-		
+
 		// Set method
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-		
+
 		// Set options
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		
+
 		// Set headers
 		curl_setopt($ch, CURLOPT_HTTPHEADER, [
 		  "API-Key: Uz7HeQtJDK4BJFHyZLiVsuvhmaiOa4hiltpLmbIqHtPXsNILScRg9AquMXYIpieo",
 		 ]
 		);
-		
-		
+
+
 		// Send the request & save response to $resp
 		$resp = curl_exec($ch);
-		
+
 		if(!$resp) {
 		  die('Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch));
 		} else {
 		 // echo "Response HTTP Status Code : " . curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		//  echo "\nResponse HTTP Body : " . $resp;
 		}
-		
+
 		// Close request to clear up some resources
 		curl_close($ch);
 
@@ -270,23 +270,23 @@ if ($merchantId){
 
 			$i = 0;
 		$offers = $json->{'result'}->{'offers'}[$i];
-		
+
 		$offerTitle = $offers->title;
 		$clickUrl = $offers->clickUrl;
-		
-		
-		
-		
+
+
+
+
 if ($offerTitle){
 
-	
+
 ?>
 		<div class="col-lg-9 col-md-8">
-			
+
 			<div class="card card-block">
 				<div class="col-lg-12">
 				<a class="small text-xs-center website" rel="nofollow external" target="_blank" href="http://<?php echo $site->url; ?> ">
-				<i class="zmdi zmdi-shopping-cart"></i> 
+				<i class="zmdi zmdi-shopping-cart"></i>
 				</a><b>Products</b> - check out these products from <b><a href='<?php echo badWords($site->url); ?>' onclick="window.open('<?php echo badWords($site->url); ?>');document.location.href='<?php echo badWords($site->url); ?>';" target="_blank"><?php echo badWords($site->url); ?> </a></b>
 				</div>
 				<div class="col-lg-12">
@@ -302,7 +302,7 @@ if ($offerTitle){
 									echo "</div>";
 		}
 	}
-						
+
 						?>
 					</div>
 				</div>
@@ -312,38 +312,38 @@ if ($offerTitle){
 	}
 ?>
 		<div class="col-lg-9 col-md-8">
-			
+
 			<div class="card card-block">
 				<div class="col-lg-12">
 				<a class="small text-xs-center website" rel="nofollow external" target="_blank" href="http://<?php echo $site->url; ?> ">
-				<i class="zmdi zmdi-globe"></i> 
+				<i class="zmdi zmdi-globe"></i>
 				</a><b>Similar Websites</b> - check out these websites that are similar to <b><a href='<?php echo badWords($site->url); ?>' onclick="window.open('<?php echo badWords($site->url); ?>');document.location.href='<?php echo badWords($site->url); ?>';" target="_blank"><?php echo badWords($site->url); ?> </a></b>
 				</div>
 				<div class="col-lg-12">
 					<?php
 					error_reporting(0);
-					$conn22 = mysqli_connect("dedi4820.your-server.de", "dedivxbn_30", "", "checkwebsitekill");
-					mysqli_set_charset($conn22,"utf8");  
+					$conn22 = mysqli_connect("checkwebstatsdb.co0ssesikagz.eu-central-1.rds.amazonaws.com", "checkwebstats", "wTjdMepaCQB0u%E", "checkwebstatsdb");
+					mysqli_set_charset($conn22,"utf8");
 					if (!$conn22) {
 						die("Connection failed: " . mysqli_connect_error());
 					}
-		
+
 					$domain = $site->url;
-				
+
 				$sql2 = "SELECT * FROM px_sites
 				WHERE similarSites LIKE '%;$domain;%'
 				ORDER BY RAND()
 				";
-				
+
 				$result2 = $conn22->query($sql2);
 				if ($result2->num_rows > 0) {
 					$doUpdate = "no";
 				} else {
 					$doUpdate = "yes";
-					
+
 				}
-								
-								$j = 0; 
+
+								$j = 0;
 								while ($row = mysql_fetch_assoc($result2)) {
 									if ($j == 0){
 										echo "<div class='row'>";
@@ -353,28 +353,28 @@ if ($offerTitle){
 									echo "<div class='col-lg-4'>";
 									echo "<a target='_blank' onclick=\"window.open('http://".$row['url']."');document.location.href='".$row['url']."'\" href='http://".$row['url']."'>".substr($row['url'], 0, 30)."</a>";
 									echo "</div>";
-									
+
 									if ($j == 2){
 										echo "</div>";
 										$j = 0;
 									} else {
 										$j++;
-																		
-										}
-										}
-						
 
-						 $simsites = $site->similarSites; 
+										}
+										}
+
+
+						 $simsites = $site->similarSites;
 						 $simsites = explode(";", $simsites);
-						 
+
 						 $length = count($simsites);
 						 $i = 0;
 						 while ($i <= $length -1){
-							 
+
 							 if ($simsites[$i] == "none"){
 								 break;
 							 }
-							 
+
 							 if ($j == 0){
 										echo "<div class='row'>";
 									}
@@ -382,14 +382,14 @@ if ($offerTitle){
 							 echo "<a target='_blank' onclick=\"window.open('http://".$simsites[$i]."');document.location.href='".$simsites[$i]."'\" href='http://".$simsites[$i]."'>".substr($simsites[$i], 0, 30)."</a>";
 							 echo "</div>";
 							 $i++;
-						 
+
 						 	if ($j == 2){
 								echo "</div>";
 								$j = 0;
 								} else {
-								$j++;								
+								$j++;
 								}
-						}		
+						}
 						 if ($length == 0 || !$length || $length == "" || $simsites[0] === NULL || $simsites[0] == ""){
 							 $whereToUpdate = $site->url;
 							 $xml = simplexml_load_file("http://data.alexa.com/data?cli=10&dat=snbamz&url=".$whereToUpdate);
@@ -410,30 +410,30 @@ if ($offerTitle){
 							if ($links != "none"){
 							$links = substr("$links", 0, -1);
 							}
-							
+
 							$sql3 = "UPDATE px_sites Set similarSites = '$links' WHERE url = '$whereToUpdate'";
 							$conn22->query($sql3);
 
 							echo "<script>location.reload();</script>";
 						}
-						
+
 						if ($simsites[0] == "none"){
-	
+
 							 echo "No similar Websites found (yet)";
 						 }
-						
+
 
 					?>
-					
+
 				</div>
 				<div class="col-lg-12">
 				<?php
-				
-				
+
+
 
 
 				?>
-				
+
 
 				</div>
 			</div>
@@ -442,34 +442,34 @@ if ($offerTitle){
 
 		<div class="col-lg-9 col-md-8">
 									<h2 class="nice-title m-t-0 "><i class=""><?php echo $site->score; ?></i>
-									<span><?php echo badWords($site->url); ?> </span> 
+									<span><?php echo badWords($site->url); ?> </span>
 									<small class="hidden-sm-down pull-lg-right m-r-2">
-									<?php 
+									<?php
 									if($cached){ ?>
 										 <?php echo __("It is a snapshot of the page as it appeared on"); ?> <?php echo $cached; ?>
 										<?php
-									}else{	
-										echo __("Last Updated"); ?>: <?php echo ago($site->updated); ?>	
-									
+									}else{
+										echo __("Last Updated"); ?>: <?php echo ago($site->updated); ?>
+
 									<?php
 									}
 									?>
-									
-										
+
+
 									</small></h2>
 
-			<div class="card card-block first">		
+			<div class="card card-block first">
 				<div class="col-lg-12">
-					
-					
 
-					
-					
+
+
+
+
 				</div>
 
-				<div class="col-lg-4 p-t-1">					
-					
-					<div class="screen animated bounceInUp">						
+				<div class="col-lg-4 p-t-1">
+
+					<div class="screen animated bounceInUp">
 						<div class="m">
 							<div class="web">
 								<img class="img-fluid"  src="<?php echo renderScreenshot($site); ?>">
@@ -478,21 +478,21 @@ if ($offerTitle){
 								<div class="p"></div>
 							</div>
 						</div>
-						<div class="f2"></div>	
-					</div>						
+						<div class="f2"></div>
+					</div>
 				</div>
 				<div class="col-lg-8 p-t-1">
 					<div class="row">
 						<?php
 							$stats 		= getStatsData($site,$technologies);
 							$optimize 	= $stats['optimize'];
-							
+
 
 						?>
 						<?php
-						
+
 							?>
-						
+
 						<div class="col-lg-12">
 							<strong class="text d-block"><?php echo __("Success"); ?></strong>
 							<small class="text-muted"><?php echo $stats["success"]; ?>% <?php echo __("of passed verification steps"); ?></small>
@@ -511,10 +511,10 @@ if ($offerTitle){
 							<small class="text-muted"><?php echo $stats["errors"]; ?>% <?php echo __("of total errors, require fast action"); ?></small>
 							<progress class="progress progress-danger progress-sm" value="<?php echo $stats["errors"]; ?>" max="100"></progress>
 						</div>
-						
 
 
-					
+
+
 
 					</div>
 
@@ -522,10 +522,10 @@ if ($offerTitle){
 
 				<div class="fot">
 						<?php if(!$cached){ ?>
-						<?php 
+						<?php
 						if(is_logged())
 						{
-							if(isBookmark($site->id)){ 
+							if(isBookmark($site->id)){
 								?><div class="pull-right btn-bookmark  btn-link" data-action="1" data-idsite="<?php echo $site->id; ?>"><i class="zmdi zmdi-star"></i> <?php echo __("Remove from bookmark"); ?></div><?php
 							}else
 							{
@@ -550,11 +550,11 @@ if ($offerTitle){
 					</div>
 
 			</div>
-			
-			
+
+
 
 		<div class="p-b-1" id="share-block">
-			
+
 			<div class="btn-group d-block " role="group" aria-label="Share">
 				<?php
 				$url_share =  urlencode(base_url().$site->url);
@@ -568,10 +568,10 @@ if ($offerTitle){
 			</div>
 			<div class="clearfix"></div>
 		</div>
-		
-			
+
+
 		<?php if(in_array("pagespeed", $modules)){ ?>
-			<div class="card card-block hidden-md-down" id="pagespeed">	
+			<div class="card card-block hidden-md-down" id="pagespeed">
 				<?php if(in_array("pagespeed", $blocks)){ ?>
 				<div class="col-md-3">
 					<div class="circle" data-text="<?php echo __("PageSpeed Desktop"); ?>" data-fbw="<?php echo config_item("chart_border_size"); ?>" data-bbw="<?php echo config_item("chart_border_size"); ?>"  data-color="<?php echo colorCircle($site->pageSpeed,85); ?>" data-percent="<?php echo $site->pageSpeed; ?>"></div>
@@ -579,11 +579,11 @@ if ($offerTitle){
 
 				<div class="col-md-3">
 					<div class="circle" data-text="<?php echo __("PageSpeed Mobile"); ?>" data-fbw="<?php echo config_item("chart_border_size"); ?>" data-bbw="<?php echo config_item("chart_border_size"); ?>"  data-color="<?php echo colorCircle($site->pagespeed_mobile,85); ?>" data-percent="<?php echo $site->pagespeed_mobile; ?>"></div>
-				</div>	
+				</div>
 
 				<div class="col-md-3">
 					<div class="circle" data-text="<?php echo __("Usability Mobile"); ?>"  data-fbw="<?php echo config_item("chart_border_size"); ?>" data-bbw="<?php echo config_item("chart_border_size"); ?>" data-color="<?php echo colorCircle($site->pagespeed_usability,85); ?>" data-percent="<?php echo $site->pagespeed_usability; ?>"></div>
-				</div>				
+				</div>
 
 				<div class="col-md-3">
 					<div class="circle" data-text="<?php echo __("Domain Authority"); ?>"   data-fbw="<?php echo config_item("chart_border_size"); ?>" data-bbw="<?php echo config_item("chart_border_size"); ?>" data-color="<?php echo colorCircle($site->domainAuthority,50); ?>" data-percent="<?php echo $site->domainAuthority; ?>"></div>
@@ -591,7 +591,7 @@ if ($offerTitle){
 				<?php } else{ show_register('pagespeed'); }?>
 
 			</div>
-			<div class="card card-block hidden-md-up" id="pagespeed">	
+			<div class="card card-block hidden-md-up" id="pagespeed">
 				<div class="row p-t-2 ">
 					<div class="col-lg-4">
 						<strong><i class="zmdi zmdi-circle <?php echo getColor($site->pageSpeed,85); ?>   check"></i> <?php echo __("PageSpeed Desktop"); ?></strong>
@@ -635,9 +635,9 @@ if ($offerTitle){
 
 		<?php } ?>
 
-			<?php 
+			<?php
 				if(!$noADS)
-					echo get_ads("ads2","text-xs-center ads card card-block p-b-1"); 
+					echo get_ads("ads2","text-xs-center ads card card-block p-b-1");
 				else
 					echo  "<!-- Note: Bad words detected disable ads for security reasons -->";
 
@@ -656,7 +656,7 @@ if ($offerTitle){
 						<progress class="progress progress-sm <?php echo getColorProgress($site->pageAuthority,24); ?>" value="<?php echo getPor($site->pageAuthority,100); ?>" max="100"></progress>
 					</div>
 				</div>
-				
+
 
 				<div class="row p-t-2 ">
 					<div class="col-lg-4">
@@ -680,7 +680,7 @@ if ($offerTitle){
 				</div>
 
 
-				
+
 
 				<?php } else{ show_register('authority'); }?>
 
@@ -696,12 +696,12 @@ if ($offerTitle){
 
 			<?php if(in_array("meta", $modules)){ ?>
 
-			<div class="card card-block" id="meta">	
+			<div class="card card-block" id="meta">
 				<?php if(in_array("meta", $blocks)){ ?>
 					<?php if($site->charset){ ?>
 					<div class="row p-t-2 ">
 						<div class="col-lg-4">
-							
+
 							<strong><i class="zmdi zmdi-dot-circle  check"></i> <?php echo __("Charset"); ?></strong>
 							<small class="text-muted d-block subtitle"><?php echo  __("Encoding"); ?></small>
 						</div>
@@ -711,7 +711,7 @@ if ($offerTitle){
 					</div>
 					<?php } ?>
 
-			
+
 				<div class="row p-t-2 ">
 					<div class="col-lg-4">
 						<?php
@@ -737,7 +737,7 @@ if ($offerTitle){
 					</div>
 					<div class="col-lg-8 text-muted">
 						<?php echo $metaDescription['fixed']; ?>
-						
+
 					</div>
 				</div>
 
@@ -773,7 +773,7 @@ if ($offerTitle){
 					</div>
 					<div class="col-lg-8 text-muted">
 						<?php echo $body_excerpt; ?>
-						
+
 					</div>
 				</div>
 				<?php } ?>
@@ -791,22 +791,22 @@ if ($offerTitle){
 							$keywords = false;
 							$keywordsCount = 0;
 						}
-						
+
 						?>
 						<strong><i class="zmdi zmdi-tag text-muted check"></i> <?php echo __("Meta Keywords"); ?></strong>
 						<small class="text-muted d-block subtitle"><?php echo ($keywordsCount); ?> <?php echo __("Detected"); ?></small>
 					</div>
 					<div class="col-lg-8">
-						<?php foreach ($keywords as $key => $value) { 
+						<?php foreach ($keywords as $key => $value) {
 							$value = rtrim(ltrim(badWords($value)));
 							if(trim($value) != ''){
 							?>
 							<a  class="keyword" href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/tag/<?php echo urlencode($value); ?>"><?php echo $value; ?></a>
 						<?php } } ?>
-						
-						
+
+
 					</div>
-				</div>	
+				</div>
 				<?php } ?>
 
 				<?php
@@ -815,32 +815,32 @@ if ($offerTitle){
 				<div class="row  p-t-2 hidden-md-down">
 					<div class="col-lg-4">
 						<?php
-						
 
-						
+
+
 						?>
 						<strong><i class="zmdi zmdi-tag text-muted check"></i> <?php echo __("Keywords Cloud"); ?></strong>
 						<small class="text-muted d-block subtitle"><?php echo __("Density"); ?></small>
 					</div>
 					<div class="col-lg-8">
-						<?php foreach ($keyw as $key => $value) { 
+						<?php foreach ($keyw as $key => $value) {
 							$key = badWords($key);
 							if(trim($key) != ''){
 							?>
 							<span  class="keyword-cloud"><?php echo more($key,30); ?><span class="value animated zoomIn"><?php echo $value; ?></span></span>
 						<?php } } ?>
-						
-						
+
+
 					</div>
 				</div>
-				
+
 
 				<div class="row  p-t-2 hidden-md-down">
 					<div class="col-lg-4">
 						<?php
 						$keyw = (extractKeyWords($site->body));
 
-						
+
 						?>
 						<strong><i class="zmdi zmdi-badge-check text-muted check"></i> <?php echo __("Keyword Consistency"); ?></strong>
 						<small class="text-muted d-block subtitle"><?php echo __("Keyword density is one of the main terms in SEO"); ?></small>
@@ -867,14 +867,14 @@ if ($offerTitle){
 												if(mb_strpos(mb_strtolower($site->metaTitle),mb_strtolower($key)) !== FALSE)
 												{
 													?>
-													<i class="zmdi zmdi-check text-success"></i> 
+													<i class="zmdi zmdi-check text-success"></i>
 													<?php
 
 												}
 												else
 												{
 													?>
-													<i class="zmdi zmdi-close text-danger"></i> 
+													<i class="zmdi zmdi-close text-danger"></i>
 													<?php
 												}
 											?>
@@ -885,14 +885,14 @@ if ($offerTitle){
 												if(mb_strpos(mb_strtolower($site->metaDescription),mb_strtolower($key)) !== FALSE)
 												{
 													?>
-													<i class="zmdi zmdi-check text-success"></i> 
+													<i class="zmdi zmdi-check text-success"></i>
 													<?php
 
 												}
 												else
 												{
 													?>
-													<i class="zmdi zmdi-close text-danger"></i> 
+													<i class="zmdi zmdi-close text-danger"></i>
 													<?php
 												}
 											?>
@@ -903,50 +903,50 @@ if ($offerTitle){
 												if(mb_strpos(mb_strtolower($site->url),mb_strtolower($key)) !== FALSE)
 												{
 													?>
-													<i class="zmdi zmdi-check text-success"></i> 
+													<i class="zmdi zmdi-check text-success"></i>
 													<?php
 
 												}
 												else
 												{
 													?>
-													<i class="zmdi zmdi-close text-danger"></i> 
+													<i class="zmdi zmdi-close text-danger"></i>
 													<?php
 												}
 											?>
-										</td>	
+										</td>
 
 										<td class="text-xs-center">
 											<?php
 												if(inHX($site->body,$key, "h1"))
 												{
 													?>
-													<i class="zmdi zmdi-check text-success"></i> 
+													<i class="zmdi zmdi-check text-success"></i>
 													<?php
 
 												}
 												else
 												{
 													?>
-													<i class="zmdi zmdi-close text-danger"></i> 
+													<i class="zmdi zmdi-close text-danger"></i>
 													<?php
 												}
 											?>
-										</td>	
+										</td>
 
 										<td class="text-xs-center">
 											<?php
 												if(inHX($site->body,$key, "h2"))
 												{
 													?>
-													<i class="zmdi zmdi-check text-success"></i> 
+													<i class="zmdi zmdi-check text-success"></i>
 													<?php
 
 												}
 												else
 												{
 													?>
-													<i class="zmdi zmdi-close text-danger"></i> 
+													<i class="zmdi zmdi-close text-danger"></i>
 													<?php
 												}
 											?>
@@ -958,8 +958,8 @@ if ($offerTitle){
 								}
 							?>
 						</table>
-						
-						
+
+
 					</div>
 				</div>
 
@@ -971,16 +971,16 @@ if ($offerTitle){
 					</div>
 					<div class="col-lg-8">
 						<div class="gsearch">
-							<div class="title"><?php 
+							<div class="title"><?php
 							if($metaTitle['fixed2'])
 							{
-								echo $metaTitle['fixed2']; 
+								echo $metaTitle['fixed2'];
 							}
 							else
 							{
 								echo badWords($site->url);
 							}
-							
+
 							?></div>
 							<?php
 							$site_url = $site->url;
@@ -996,7 +996,7 @@ if ($offerTitle){
 									} ?>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 
@@ -1010,7 +1010,7 @@ if ($offerTitle){
 						<small class="text-muted d-block subtitle"><?php echo $detected[$site->robots]; ?></small>
 					</div>
 					<div class="col-lg-8">
-						<a href="#">http://<?php echo $site->url; ?>/robots.txt</a>						
+						<a href="#">http://<?php echo $site->url; ?>/robots.txt</a>
 					</div>
 				</div>
 
@@ -1022,12 +1022,12 @@ if ($offerTitle){
 					</div>
 					<div class="col-lg-8">
 						<a href="#">http://<?php echo $site->url; ?>/sitemap.xml</a>
-						
-					</div>
-				</div>	
-				<?php 
 
-				if($site->created_on && $site->created_on != '0000-00-00'){ 
+					</div>
+				</div>
+				<?php
+
+				if($site->created_on && $site->created_on != '0000-00-00'){
 						$expires_on = getDaysDiff($site->expires_on,date("Y-m-d H:i:s"));
 						$created_on = getDaysDiff($site->created_on,date("Y-m-d H:i:s"));
 					?>
@@ -1043,15 +1043,15 @@ if ($offerTitle){
 							<?php if($site->expires_on && $site->expires_on != '0000-00-00'){ ?>
 							<div class="truncate"><i class="zmdi <?php echo getIcon($expires_on,90); ?> <?php echo getColor($expires_on,90); ?> check"></i> <?php echo __("Expires on:"); ?> <?php echo ($site->expires_on); ?>  / <?php echo days2h($expires_on); ?></div>
 							<?php } ?>
-					
+
 						</div>
-						
+
 					</div>
 				</div>
-			
+
 
 				<?php } ?>
-		
+
 					<?php
 
 					$document_size	= strBytes($site->body);
@@ -1072,19 +1072,19 @@ if ($offerTitle){
 							<div class="truncate"><i class="zmdi <?php echo getIcon(2000000,$document_size); ?> <?php echo getColor(2000000,$document_size); ?>  check"></i> <?php echo __("Document Size:"); ?> ~<?php echo formatBytes($document_size); ?></div>
 							<div class="truncate"><i class="zmdi <?php echo getIcon($code_size,20); ?> <?php echo getColor($code_size,20); ?>  check"></i> <?php echo __("Code Size:"); ?> ~<?php echo formatBytes($code_size); ?></div>
 							<div class="truncate"><i class="zmdi <?php echo getIcon($text_ratio,20); ?> <?php echo getColor($text_ratio,20); ?>  check"></i> <?php echo __("Text Size:"); ?> ~<?php echo formatBytes($text_size); ?> <strong class=""><?php echo __("Ratio:"); ?> <?php echo number_format($text_ratio,2); ?>%</strong></div>
-							
-						
+
+
 						</div>
-						
+
 					</div>
-				</div>	
+				</div>
 
 
 					<?php } else{ show_register('meta'); }?>
 
 
 			</div>
-			
+
 			<?php } ?>
 
 
@@ -1094,9 +1094,9 @@ if ($offerTitle){
 
 			<div class="card card-block" id="social">
 
-				<?php if(in_array("social", $blocks)){ 
+				<?php if(in_array("social", $blocks)){
 						$social = json_decode($site->social);
-						
+
 						$total = 0;
 						foreach ($social as $key => $value) {
 							$total = $total+$value;
@@ -1117,13 +1117,13 @@ if ($offerTitle){
 							<?php
 						}
 					?>
-				
-				
-
-				
 
 
-				
+
+
+
+
+
 
 				<?php } else{ show_register('social'); }?>
 
@@ -1139,10 +1139,10 @@ if ($offerTitle){
 
 			<?php if(in_array("traffic", $modules)){ ?>
 
-			
+
 			<h2 class="nice-title "><i class="zmdi zmdi-traffic"></i><span><?php echo __("Estimation Traffic and Earnings"); ?></span></h2>
 
-			<div class="card card-block" id="traffic">	
+			<div class="card card-block" id="traffic">
 				<?php if(in_array("traffic", $blocks)){ ?>
 				<div class="row">
 					<div class="col-lg-4">
@@ -1160,7 +1160,7 @@ if ($offerTitle){
 							<div class="subtitle"><?php echo __("Daily"); ?></div>
 						</div>
 					</div>
-					
+
 					<div class="col-lg-4">
 						<div class="box-info green">
 							<div class="value">$<?php echo number_format($site->IncomeDaily); ?></div>
@@ -1186,7 +1186,7 @@ if ($offerTitle){
 							<div class="subtitle"><?php echo __("Monthly"); ?></div>
 						</div>
 					</div>
-					
+
 					<div class="col-lg-4">
 						<div class="box-info green">
 							<div class="value">$<?php echo number_format($site->IncomeDaily*25); ?></div>
@@ -1213,7 +1213,7 @@ if ($offerTitle){
 							<div class="subtitle"><?php echo __("Yearly"); ?></div>
 						</div>
 					</div>
-					
+
 					<div class="col-lg-4">
 						<div class="box-info green">
 							<div class="value">$<?php echo number_format(($site->IncomeDaily*22)*12); ?></div>
@@ -1227,23 +1227,23 @@ if ($offerTitle){
 
 			<?php } ?>
 
-			<?php 
+			<?php
 			if(!$noADS)
-				echo get_ads("ads3","ads card card-block p-b-1"); 
+				echo get_ads("ads3","ads card card-block p-b-1");
 			else
 				echo  "<!-- Note: Bad words detected disable ads for security reasons -->";
 			?>
 
 
 			<?php if(count($technologies)>0 && in_array("technologies", $modules)){ ?>
-			
+
 			<h2 class="nice-title "><i class="zmdi zmdi-code-setting"></i><span><?php echo __("Technologies"); ?></span></h2>
 
 			<div class="card card-block">
-			<?php if(in_array("technologies", $blocks)){ ?>	
-			<?php foreach ($technologies as $key => $value) { 
+			<?php if(in_array("technologies", $blocks)){ ?>
+			<?php foreach ($technologies as $key => $value) {
 								?>
-	
+
 				<div class="col-md-6 p-b-2 p-t-1" id="technologies">
 					<a class="media text-muted" href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/<?php echo config_item("slug_made_with"); ?>/<?php echo urlencode($value->name); ?>">
 					  <span class="media-left">
@@ -1266,26 +1266,26 @@ if ($offerTitle){
 
 
 			<?php if(in_array("pagespeed_stats", $modules) && $site->pagespeed_rules){ ?>
-			
+
 			<h2 class="nice-title "><i class="zmdi zmdi-google"></i><span><?php echo __("Google PageSpeed Insights"); ?></span></h2>
 			<div class="card card-block" id="pagespeed_stats">
 				<?php if(in_array("pagespeed_stats", $blocks)){ ?>
-					
+
 
 					<div class="row  p-t-2">
 						<div class="col-lg-4">
 							<strong><i class="zmdi zmdi-google check"></i> <?php echo __("Google Stats"); ?></strong>
 							<small class="text-muted d-block subtitle"><?php echo __("This test checks to see if a page has applied common performance best practices."); ?></small>
-							
+
 						</div>
 
 
-					
+
 
 						<div class="col-lg-8">
 							<div class=" p-t-0">
-								
-								
+
+
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Number Resources:"); ?> <span class="text-muted"><?php echo number_format($site->pagespeed_numberResources); ?></span><br>
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Number Hosts:"); ?> <span class="text-muted"><?php echo number_format($site->pagespeed_numberHosts); ?></span><br>
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Total Request:"); ?> <span class="text-muted"><?php echo formatBytes($site->pagespeed_totalRequestBytes); ?></span><br>
@@ -1299,12 +1299,12 @@ if ($offerTitle){
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Number CSS Resources:"); ?> <span class="text-muted"><?php echo number_format($site->pagespeed_numberCssResources); ?></span><br>
 
 
-								
-							
+
+
 							</div>
-							
+
 						</div>
-					</div>	
+					</div>
 				</div>
 
 
@@ -1318,7 +1318,7 @@ if ($offerTitle){
 					<?php
 					$google_rules = json_decode($site->pagespeed_rules);
 
-					
+
 					foreach ($google_rules->ruleResults as $key => $value) {
 							if(isset($value->ruleImpact))
 							{
@@ -1348,7 +1348,7 @@ if ($offerTitle){
 						<div class="col-lg-6 truncate">
 							<strong class="truncate"><i class="zmdi zmdi-<?php echo $icon[$impact]; ;?> text-<?php echo $color[$impact] ;?> check"></i> <?php echo __($value->localizedRuleName); ?></strong>
 							<small class="d-block subtitle">
-								<?php 
+								<?php
 								if($impact == 999)
 									$impact = 0;
 								for ($x=1;$x<=$impact;$x++) { ?>
@@ -1359,17 +1359,17 @@ if ($offerTitle){
 									<i class="zmdi zmdi-circle-o	 text-muted"></i>
 								<?php } ?>
 
-								
-								
+
+
 							</small>
 						</div>
 						<div class="col-lg-6">
-							<?php echo __(createRecomendationGoogle($value->summary)); ?>						
+							<?php echo __(createRecomendationGoogle($value->summary)); ?>
 						</div>
 					</div>
 					<?php } ?>
 					</div>
-					
+
 					<h2 class="nice-title "><i class="zmdi zmdi-smartphone-android"></i><span><?php echo __("Mobile"); ?></span></h2>
 					<div class="card card-block ">
 						<?php if($site->pagespeed_screenshot_m){ ?>
@@ -1378,7 +1378,7 @@ if ($offerTitle){
 					<?php
 					$google_rules = json_decode($site->pagespeed_rules_mobile);
 
-					
+
 					foreach ($google_rules->ruleResults as $key => $value) {
 							if(isset($value->ruleImpact))
 							{
@@ -1408,7 +1408,7 @@ if ($offerTitle){
 						<div class="col-lg-6 truncate">
 							<strong class="truncate"><i class="zmdi zmdi-<?php echo $icon[$impact]; ;?> text-<?php echo $color[$impact] ;?> check"></i> <?php echo __($value->localizedRuleName); ?></strong>
 							<small class="d-block subtitle">
-								<?php 
+								<?php
 								if($impact == 999)
 									$impact = 0;
 								for ($x=1;$x<=$impact;$x++) { ?>
@@ -1419,12 +1419,12 @@ if ($offerTitle){
 									<i class="zmdi zmdi-circle-o	 text-muted"></i>
 								<?php } ?>
 
-								
-								
+
+
 							</small>
 						</div>
 						<div class="col-lg-6">
-							<?php echo createRecomendationGoogle($value->summary); ?>						
+							<?php echo createRecomendationGoogle($value->summary); ?>
 						</div>
 					</div>
 					<?php } ?>
@@ -1432,10 +1432,10 @@ if ($offerTitle){
 
 				<?php } else{ show_register('pagespeed_stats'); }?>
 			</div>
-			<?php } ?>	
-			
+			<?php } ?>
+
 			<?php if(in_array("tips", $modules)){ ?>
-			
+
 			<h2 class="nice-title "><i class="zmdi zmdi-help"></i><span><?php echo __("Speed And Optimization Tips"); ?></span></h2>
 			<div class="card card-block" id="tips">
 				<?php if(in_array("tips", $blocks)){ ?>
@@ -1453,7 +1453,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['title'],'success',__("Congratulations! Your title is optimized"),__("Warning! Your title is not optimized")); ?>						
+						<?php echo createRecomendation($optimize['title'],'success',__("Congratulations! Your title is optimized"),__("Warning! Your title is not optimized")); ?>
 					</div>
 				</div>
 
@@ -1467,12 +1467,12 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['description'],'success',__("Congratulations! Your description is optimized"),__("Warning! Your description is not optimized")); ?>						
+						<?php echo createRecomendation($optimize['description'],'success',__("Congratulations! Your description is optimized"),__("Warning! Your description is not optimized")); ?>
 					</div>
 				</div>
 
 
-								
+
 
 				<div class="row p-t-2 ">
 					<div class="col-lg-4">
@@ -1484,7 +1484,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['robots'],'success',__("Congratulations! Your site have a robots.txt file"),__("Warning! Your site not have a robots.txt file")); ?>						
+						<?php echo createRecomendation($optimize['robots'],'success',__("Congratulations! Your site have a robots.txt file"),__("Warning! Your site not have a robots.txt file")); ?>
 					</div>
 				</div>
 
@@ -1498,10 +1498,10 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['sitemap'],'success',__("Congratulations! We've found a sitemap file for your website"),__("Warning! Not found a sitemap file for your website")); ?>						
+						<?php echo createRecomendation($optimize['sitemap'],'success',__("Congratulations! We've found a sitemap file for your website"),__("Warning! Not found a sitemap file for your website")); ?>
 					</div>
 				</div>
-					
+
 				<!--<div class="row p-t-2 ">
 					<div class="col-lg-4">
 						<strong><i class="zmdi <?php echo converTypeToIcon($optimize['googleIndex']); ?> text-<?php echo $optimize['googleIndex']; ?> check"></i> <?php echo __("Google Links"); ?></strong>
@@ -1512,7 +1512,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['googleIndex'],'success',__("Congratulations! You are indexed by google"),__("Warning! Your website not have indexed by google")); ?>						
+						<?php echo createRecomendation($optimize['googleIndex'],'success',__("Congratulations! You are indexed by google"),__("Warning! Your website not have indexed by google")); ?>
 					</div>
 				</div> -->
 
@@ -1527,9 +1527,9 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['https'],'success',__("Congratulations! Your site have Support to HTTPS"),__("Warning! Your website is not SSL secured (HTTPS).")); ?>						
+						<?php echo createRecomendation($optimize['https'],'success',__("Congratulations! Your site have Support to HTTPS"),__("Warning! Your website is not SSL secured (HTTPS).")); ?>
 					</div>
-				</div>	
+				</div>
 
 				<div class="row p-t-2 ">
 					<div class="col-lg-4">
@@ -1541,7 +1541,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['pageSpeed'],'success',__("Congratulations! Your site load very fast on desktop devices"),__("Warning! Your site load very slow on Desktop devices. need improve this")); ?>						
+						<?php echo createRecomendation($optimize['pageSpeed'],'success',__("Congratulations! Your site load very fast on desktop devices"),__("Warning! Your site load very slow on Desktop devices. need improve this")); ?>
 					</div>
 				</div>
 
@@ -1556,7 +1556,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['pagespeed_mobile'],'success',__("Congratulations! Your site load very fast on mobile devices"),__("Warning! Your site load very slow on mobiles devices. need improve this")); ?>						
+						<?php echo createRecomendation($optimize['pagespeed_mobile'],'success',__("Congratulations! Your site load very fast on mobile devices"),__("Warning! Your site load very slow on mobiles devices. need improve this")); ?>
 					</div>
 				</div>
 
@@ -1572,7 +1572,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['headers'],'success',__("Congratulations! You are using your H1 and H2 tags in your site"),__("Warning! Your page not contain any H1 and H2 headings. H1 and H2 headings help indicate the important topics of your page to search engines")); ?>						
+						<?php echo createRecomendation($optimize['headers'],'success',__("Congratulations! You are using your H1 and H2 tags in your site"),__("Warning! Your page not contain any H1 and H2 headings. H1 and H2 headings help indicate the important topics of your page to search engines")); ?>
 					</div>
 				</div>
 
@@ -1586,7 +1586,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['google_safe'],'success',__("Congratulations! Your site is not listed in a blacklist"),__("Error! Your site is listed in a blacklist")); ?>						
+						<?php echo createRecomendation($optimize['google_safe'],'success',__("Congratulations! Your site is not listed in a blacklist"),__("Error! Your site is listed in a blacklist")); ?>
 					</div>
 				</div>
 
@@ -1600,10 +1600,10 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['w3c'],'success',__("Congratulations! Your site not have errors W3C"),__("Warning! Your site have errors W3C")); ?>						
+						<?php echo createRecomendation($optimize['w3c'],'success',__("Congratulations! Your site not have errors W3C"),__("Warning! Your site have errors W3C")); ?>
 					</div>
 				</div>
-				
+
 
 				<div class="row p-t-2 ">
 					<div class="col-lg-4">
@@ -1615,7 +1615,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['hasAMP'],'success',__("Congratulations! Your site have AMP Version"),__("Warning! Your site not have AMP Version")); ?>						
+						<?php echo createRecomendation($optimize['hasAMP'],'success',__("Congratulations! Your site have AMP Version"),__("Warning! Your site not have AMP Version")); ?>
 					</div>
 				</div>
 
@@ -1629,7 +1629,7 @@ if ($offerTitle){
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['domainAuthority'],'success',__("Congratulations! Your Domain Authority is good"),__("Warning! Domain Authority of your website is slow. It is good to have domain authority more than 25.")); ?>						
+						<?php echo createRecomendation($optimize['domainAuthority'],'success',__("Congratulations! Your Domain Authority is good"),__("Warning! Domain Authority of your website is slow. It is good to have domain authority more than 25.")); ?>
 					</div>
 				</div>
 
@@ -1644,7 +1644,7 @@ if ($offerTitle){
 					</div>
 
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['gzip'],'success',__("Congratulations! Your website is compressed"),__("Warning! Your site not  is compressed, this can make slower response for the visitors")); ?>						
+						<?php echo createRecomendation($optimize['gzip'],'success',__("Congratulations! Your website is compressed"),__("Warning! Your site not  is compressed, this can make slower response for the visitors")); ?>
 					</div>
 				</div>
 
@@ -1660,7 +1660,7 @@ if ($offerTitle){
 					</div>
 
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['favicon'],'success',__("Congratulations! Your website appears to have a favicon."),__("Warning!  Your site not have a favicon" )); ?>						
+						<?php echo createRecomendation($optimize['favicon'],'success',__("Congratulations! Your website appears to have a favicon."),__("Warning!  Your site not have a favicon" )); ?>
 					</div>
 				</div>
 
@@ -1675,10 +1675,10 @@ if ($offerTitle){
 					</div>
 
 					<div class="col-lg-8">
-						<?php 
+						<?php
 						$links = json_decode($site->links);
-						
-						echo createRecomendation($optimize['links'],'success',__("Congratulations! You not have broken links"),__("Warning!  You have broken links")); ?>						
+
+						echo createRecomendation($optimize['links'],'success',__("Congratulations! You not have broken links"),__("Warning!  You have broken links")); ?>
 												<span class="cursor-pointer btn-link btn-toggle-class" data-target=".list-links" data-class="show" ><?php echo __("View links"); ?></span>
 
 					</div>
@@ -1686,17 +1686,17 @@ if ($offerTitle){
 
 						<div class="text-muted text-small p-t-1">
 						<table class=" table" width="100%">
-									<tr class="header">										
+									<tr class="header">
 										<td class=""><strong><?php echo str_ireplace("%count%", count($links), __("First %count% Links")); ?> </strong></td>
 										<td class="text-xs-center"><strong><?php echo __("Relationship"); ?> </strong></td>
 										<td class="text-xs-center"><strong><?php echo __("HTTP Status"); ?></strong></td>
 									</tr>
-						
-						<?php 
-						
+
+						<?php
+
 						foreach ($links as $key => $value) {
-							
-						
+
+
 							$icon =  '<i class="zmdi zmdi-check text-success check"></i>';
 							if(intval($value->response) == 0 || intval($value->response) == 404 || intval($value->response) == 500)
 							{
@@ -1716,10 +1716,10 @@ if ($offerTitle){
 								<td class="text-xs-center"><?php echo $value->rel; ?></td>
 								<td class="text-xs-center"><?php echo $icon; ?> <?php echo $value->response; ?></td>
 							</tr>
-							
+
 							<?php
 							}
-						}						
+						}
 						?>
 						</table>
 						</div>
@@ -1734,9 +1734,9 @@ if ($offerTitle){
 
 
 				<?php } else{ show_register('tips'); }?>
-				
 
-				
+
+
 
 
 			</div>
@@ -1745,10 +1745,10 @@ if ($offerTitle){
 
 			<?php if(in_array("alexa", $modules)){ ?>
 
-			
+
 				<h2 class="nice-title "><i class="zmdi zmdi-chart"></i><span><?php echo __("Alexa Rank"); ?></span></h2>
 				<div class="card card-block" id="alexa">
-					<?php if(in_array("alexa", $blocks)){ ?>	
+					<?php if(in_array("alexa", $blocks)){ ?>
 					<div class="row p-t-2 ">
 						<div class="col-lg-6 text-xs-center ">
 							<h2><?php echo number_format($site->alexaGlobal); ?></h2>
@@ -1759,7 +1759,7 @@ if ($offerTitle){
 						<div class="col-lg-6 text-xs-center ">
 							<h2><?php echo number_format($site->alexaLocal); ?></h2>
 							<small class="d-block text-muted">
-								 <?php 
+								 <?php
 								 $country = explode(",", $site->alexaLocalCountry);
 								 echo $country[0]; ?>
 							</small>
@@ -1770,7 +1770,7 @@ if ($offerTitle){
 						</div>
 						<?php } ?>
 					</div>
-			
+
 					<?php if(!$cached){ ?>
 					<div class="row p-t-2 ">
 						<div class="col-lg-6 img-alexa">
@@ -1781,7 +1781,7 @@ if ($offerTitle){
 							<strong><?php echo __("Search"); ?></strong>
 							<img class="img-fluid" src="https://traffic.alexa.com/graph?o=lt&y=q&b=ffffff&n=666666&f=999999&r=1y&t=2&z=30&c=1&h=300&w=500&u=<?php echo $site->url; ?>">
 						</div>
-						
+
 					</div>
 					<?php } ?>
 
@@ -1792,13 +1792,13 @@ if ($offerTitle){
 
 			<?php if(in_array("domain_available", $modules) && !$cached){ ?>
 
-			
+
 				<h2 class="nice-title "><i class="zmdi zmdi-link"></i><span><?php echo __("Domain Available"); ?></span></h2>
 				<div class="card card-block" id="domain_available">
-					<?php if(in_array("domain_available", $blocks)){ 
+					<?php if(in_array("domain_available", $blocks)){
 						$domains = json_decode($site->available_domain);
-						
-						?>	
+
+						?>
 					<table class="table table-hover table-striped">
 						<thead>
 							<tr>
@@ -1815,7 +1815,7 @@ if ($offerTitle){
 									$available = __("Available");
 									if(config_item("affiliate_service_domain"))
 										$available = $available.' <a target="_blank" rel="nofollow external" href="'.str_ireplace("{domain}", strtolower($value->domain), config_item("affiliate_service_domain")).'"><small><i class="zmdi zmdi-open-in-new"></i> '.__("Buy Now!").' </small></a>';
-									
+
 								}
 							?>
 							<tr>
@@ -1827,16 +1827,16 @@ if ($offerTitle){
 						}
 						?>
 						</thead>
-					
+
 						<?php
 
-						?>	
+						?>
 						</tbody>
 						</table>
-					
-					
-			
-					
+
+
+
+
 
 					<?php } else{ show_register('alexa'); }?>
 				</div>
@@ -1845,83 +1845,83 @@ if ($offerTitle){
 
 
 			<?php if(in_array("server", $modules)){ ?>
-			
+
 				<h2 class="nice-title "><i class="zmdi zmdi-device-hub"></i><span><?php echo __("Information Server"); ?></span></h2>
-				<div class="card card-block" id="server">	
-					<?php if(in_array("server", $blocks)){ ?>	
+				<div class="card card-block" id="server">
+					<?php if(in_array("server", $blocks)){ ?>
 					<div class="row p-t-2 ">
-						<div class="col-lg-4">							
+						<div class="col-lg-4">
 							<strong><i class="zmdi zmdi-code check"></i> <?php echo __("Response Header"); ?></strong>
-							<small class="text-muted d-block subtitle">						
+							<small class="text-muted d-block subtitle">
 								<?php echo __("HTTP headers carry information about the client browser, the requested page and the server"); ?>
 							</small>
 						</div>
-				
+
 						<div class="col-lg-8">
 								<pre><?php echo  strip_tags(rtrim(ltrim($site->headers)),"<br>"); ?></pre>
 
 						</div>
 					</div>
-						<?php 						
+						<?php
 						$ips = explode(";",$site->ip);
 
 
-						if($ips[0] && $ips[0] != '127.0.0.1'){ 
-							
+						if($ips[0] && $ips[0] != '127.0.0.1'){
+
 							?>
 					<div class="row p-t-2 ">
-						<div class="col-lg-4">							
+						<div class="col-lg-4">
 							<strong><i class="zmdi zmdi-globe check"></i> <?php echo __("IP Server"); ?></strong>
-							<small class="text-muted d-block subtitle">						
+							<small class="text-muted d-block subtitle">
 								<?php echo __("The IP Address from server"); ?>
 							</small>
 						</div>
-					
+
 						<div class="col-lg-8">
-								<?php 
+								<?php
 								foreach ($ips as $key => $value) {
 									if($value != ''){
 									?><i class="zmdi zmdi-laptop-chromebook check"></i> <a class="text-muted" href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/ip/<?php echo urlencode($value); ?>"><?php echo $value; ?></a><br><?php
 									}
 								}
-							
+
 								?>
 						</div>
 
-					
+
 					</div>
 					<?php if( $site->city){ ?>
 					<div class="row p-t-2 ">
-						<div class="col-lg-4">							
+						<div class="col-lg-4">
 							<strong><i class="zmdi zmdi-info check"></i> <?php echo __("IP Details"); ?></strong>
-							<small class="text-muted d-block subtitle">						
+							<small class="text-muted d-block subtitle">
 								<?php echo __("Information for IP address"); ?>
 							</small>
 						</div>
-				
-						<div class="col-lg-8">								
+
+						<div class="col-lg-8">
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("City:"); ?> <a class="text-muted" href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/city/<?php echo urlencode($site->city); ?>"><?php echo $site->city; ?></a><br>
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Country:"); ?> <a class="text-muted" href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/country/<?php echo urlencode($site->country); ?>"><?php echo $site->country; ?></a><br>
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Region:"); ?> <a class="text-muted" href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/region/<?php echo urlencode($site->region); ?>"><?php echo $site->region; ?></a><br>
 								<i class="zmdi zmdi-info-outline check"></i> <?php echo __("ISP:"); ?> <a class="text-muted" href="<?php echo base_url(); ?><?php echo config_item("slug_filter"); ?>/isp/<?php echo urlencode($site->isp); ?>"><?php echo $site->isp; ?></a><br>
 
-								
-								
+
+
 						</div>
 					</div>
 					<?php } ?>
-						
-						<?php }	
+
+						<?php }
 						$result = (array) json_decode($site->dns_record);
-						
+
 						if(count($result)>1){
 						?>
-					
+
 
 					<div class="row  p-t-2 hidden-md-down">
-						<div class="col-lg-4">							
+						<div class="col-lg-4">
 							<strong><i class="zmdi zmdi-info check"></i> <?php echo __("DNS Records"); ?></strong>
-							<small class="text-muted d-block subtitle">						
+							<small class="text-muted d-block subtitle">
 								 <?php echo __("DNS Resource Records associated with a hostname"); ?>
 							</small>
 						</div>
@@ -1930,21 +1930,21 @@ if ($offerTitle){
 						</div>
 						<div class="col-lg-12 list-links m-t-2">
 								<table class="consistency table" >
-									<tr class="header">										
+									<tr class="header">
 										<td class="text-xs-"><?php echo __("Type"); ?></td>
 										<td class="text-xs-"><?php echo __("Name"); ?></td>
-										
+
 										<td class="text-xs-center"><?php echo __("Value"); ?></td>
-										
-										
+
+
 										<td class="text-xs-center"><?php echo __("Class"); ?></td>
-										<td class="text-xs-center"><?php echo __("TTL"); ?></td>										
+										<td class="text-xs-center"><?php echo __("TTL"); ?></td>
 									</tr>
 								<?php
-								
+
 								foreach ($result as $key => $value) {
 									$value =  (array) $value;
-									
+
 									if(!$value['target'])
 										$value['target'] = $value['txt'];
 									if(!$value['target'])
@@ -1954,16 +1954,16 @@ if ($offerTitle){
 									if(!$value['target'])
 										$value['target'] = $value['mname'];
 									$name = $value['host'];
-									
+
 
 									?>
 									<tr>
 										<td><?php echo $value['type']; ?></td>
-										
+
 										<td class="text-xs-center "><?php echo $name; ?></td>
 										<td class="text-xs-center "><?php echo $value['target']; ?></td>
-										
-										
+
+
 										<td class="text-xs-center text-muted"><?php echo $value['class']; ?></td>
 										<td class="text-xs-center "><?php echo $value['ttl']; ?></td>
 									</tr>
@@ -1971,15 +1971,15 @@ if ($offerTitle){
 								}
 								?>
 								</table>
-								
-								
-								
-								
+
+
+
+
 						</div>
 
 
-						
-						
+
+
 					</div>
 					<?php } ?>
 
@@ -1987,16 +1987,16 @@ if ($offerTitle){
 
 						<?php
 						$curl_info = json_decode($site->curl_info);
-					
+
 						if($curl_info){
 							?>
 							<div class="row p-t-2 ">
-								<div class="col-lg-4">							
+								<div class="col-lg-4">
 									<strong><i class="zmdi zmdi-developer-board check"></i> <?php echo __("Response Server"); ?></strong>
 									<small class="text-muted d-block subtitle"><?php echo __("Information regarding a specific transfer"); ?></small>
 								</div>
-						
-								<div class="col-lg-8">								
+
+								<div class="col-lg-8">
 										<i class="zmdi zmdi-info-outline check"></i> <?php echo __("URL:"); ?> <span class="text-muted"><?php echo $curl_info->url; ?></span><br>
 										<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Content Type:"); ?> <span class="text-muted" title="<?php echo __("Content-Type: of the requested document. NULL indicates server did not send valid Content-Type: header"); ?>"><?php echo $curl_info->content_type; ?></span><br>
 										<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Http Code:"); ?> <span class="text-muted" title="<?php echo __("The last response code"); ?>"><?php echo $curl_info->http_code; ?></span><br>
@@ -2008,10 +2008,10 @@ if ($offerTitle){
 										<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Download Size:"); ?> <span class="text-muted" title="<?php echo __("Total number of bytes downloaded"); ?>"><?php echo formatBytes($curl_info->size_download); ?></span><br>
 										<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Speed Download:"); ?> <span class="text-muted" title="<?php echo __("Average download speed"); ?>"><?php echo formatBytes($curl_info->speed_download); ?> <?php echo __("Per seconds"); ?></span><br>
 										<i class="zmdi zmdi-info-outline check"></i> <?php echo __("Start Rransfer Time:"); ?> <span class="text-muted" title="<?php echo __("Time in seconds until the first byte is about to be transferred"); ?>"><?php echo ($curl_info->starttransfer_time); ?> <?php echo __("Seconds"); ?></span><br>
-									
 
-										
-										
+
+
+
 								</div>
 							</div>
 						<?php
@@ -2024,13 +2024,13 @@ if ($offerTitle){
 			<?php } ?>
 
 			<?php if(config_item("disqus_shortname") && !$cached){ ?>
-			
+
 				<h2 class="nice-title "><i class="zmdi zmdi-comment-alt-text"></i><span><?php echo __("Comments"); ?></span></h2>
 				<div class="card card-block">
-				
+
 					<div class="row p-t-2 ">
 						<div class="col-lg-12 text-xs-center ">
-								
+
 									<div class="card card-block">
 										<div id="disqus_thread"></div>
 										<script type="text/javascript">
@@ -2042,20 +2042,18 @@ if ($offerTitle){
 											})();
 										</script>
 									</div>
-								
-						</div>						
-					</div>					
-				
 
-				
+						</div>
+					</div>
+
+
+
 				</div>
 
 <?php } ?>
 
-			</div>		
+			</div>
 		</div>
-		
+
 	</div>
 </div>
-
-

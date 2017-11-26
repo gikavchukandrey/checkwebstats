@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'dedi4820.your-server.de',
-	'username' => 'dedivxbn_30',
-	'password' => '',
-	'database' => 'checkwebsitekill',
+	'hostname' => 'checkwebstatsdb.co0ssesikagz.eu-central-1.rds.amazonaws.com',
+	'username' => 'checkwebstats',
+	'password' => 'wTjdMepaCQB0u%E',
+	'database' => 'checkwebstatsdb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'px_',
 	'pconnect' => FALSE,
@@ -84,4 +84,3 @@ $db['default'] = array(
 	'autoinit' => FALSE,
 	'save_queries' => TRUE
 );
-
