@@ -1,3 +1,12 @@
+
+1. Create DB and import DB.sql
+2. add database info in application/views/pages/review.php, line 325 
+3. add database info in application/config/database.php
+
+
+
+
+
 Admin Zugangsdaten zum Einloggen (wird an sich nicht gebraucht):
 
 1admin1
@@ -14,3 +23,10 @@ Nun sagt vielleicht Merchant "A.com", dass er super gerne zu sehen wäre, wenn e
 Ich habe schonmal jede Menge Daten eingepflegt. Sollte ein bisschen reichen :)
 
 Einzige Frage ist noch nach dem Impressum. Ob wir erstmal weglassen oder wie auch immer ^^
+
+
+---
+
+1. Create DB and import DB.sql
+2. add database info in application/views/pages/review.php, line 325 
+3. add database info in application/config/database.php
