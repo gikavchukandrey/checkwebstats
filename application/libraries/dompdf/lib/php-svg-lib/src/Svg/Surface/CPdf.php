@@ -2114,7 +2114,7 @@ EOT;
 
         $this->addMessage("openFont: $font - $name");
 
-        if (!$this->isUnicode || in_array(mb_strtolower(basename($name)), self::$coreFonts)) {
+        if (!$this->isUnicode || in_array(preg_replace('/^(.*)$/', '\L$1',basename($name)), self::$coreFonts)) {
             $metrics_name = "$name.afm";
         } else {
             $metrics_name = "$name.ufm";
@@ -3477,7 +3477,7 @@ EOT;
      */
     function registerText($font, $text)
     {
-        if (!$this->isUnicode || in_array(mb_strtolower(basename($font)), self::$coreFonts)) {
+        if (!$this->isUnicode || in_array(preg_replace('/^(.*)$/', '\L$1',basename($font)), self::$coreFonts)) {
             return;
         }
 

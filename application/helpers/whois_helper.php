@@ -290,7 +290,7 @@ function LookupDomain($domain){
 	foreach ($temp as $key => $value) {
 		$a = explode(":",$value);
 		$a[0] =ltrim(str_ireplace(">", "",$a[0]));
-		$response[mb_strtolower($a[0])] = ltrim($a[1]);
+		$response[preg_replace('/^(.*)$/', '\L$1',$a[0])] = ltrim($a[1]);
 	}
 	return $response;
 }

@@ -1271,7 +1271,7 @@ class Stylesheet
                         $acceptedmedia = self::$ACCEPTED_GENERIC_MEDIA_TYPES;
                         $acceptedmedia[] = $this->_dompdf->getOptions()->getDefaultMediaType();
 
-                        $media_queries = preg_split("/\s*,\s*/", mb_strtolower(trim($match[3])));
+                        $media_queries = preg_split("/\s*,\s*/", preg_replace('/^(.*)$/', '\L$1',trim($match[3])));
                         foreach ($media_queries as $media_query) {
                             if (in_array($media_query, $acceptedmedia)) {
                                 //if we have a media type match go ahead and parse the stylesheet
@@ -1434,7 +1434,7 @@ class Stylesheet
 
             // @import url media_type [media_type...]
             foreach ($arr as $type) {
-                if (in_array(mb_strtolower(trim($type)), $acceptedmedia)) {
+                if (in_array(preg_replace('/^(.*)$/', '\L$1',trim($type)), $acceptedmedia)) {
                     $accept = true;
                     break;
                 }
@@ -1580,7 +1580,7 @@ class Stylesheet
                 continue;
             }
 
-            $prop_name = rtrim(mb_strtolower(mb_substr($prop, 0, $i)));
+            $prop_name = rtrim(preg_replace('/^(.*)$/', '\L$1',mb_substr($prop, 0, $i)));
             $value = ltrim(mb_substr($prop, $i + 1));
             if ($DEBUGCSS) print $prop_name . ':=' . $value . ($important ? '!IMPORTANT' : '') . ')';
             //New style, anyway empty

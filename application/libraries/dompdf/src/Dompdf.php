@@ -579,8 +579,8 @@ class Dompdf
             switch (strtolower($tag->nodeName)) {
                 // load <link rel="STYLESHEET" ... /> tags
                 case "link":
-                    if (mb_strtolower(stripos($tag->getAttribute("rel"), "stylesheet") !== false) || // may be "appendix stylesheet"
-                        mb_strtolower($tag->getAttribute("type")) === "text/css"
+                    if (preg_replace('/^(.*)$/', '\L$1',stripos($tag->getAttribute("rel"), "stylesheet") !== false) || // may be "appendix stylesheet"
+                        preg_replace('/^(.*)$/', '\L$1',$tag->getAttribute("type")) === "text/css"
                     ) {
                         //Check if the css file is for an accepted media type
                         //media not given then always valid
@@ -588,7 +588,7 @@ class Dompdf
                         if (count($formedialist) > 0) {
                             $accept = false;
                             foreach ($formedialist as $type) {
-                                if (in_array(mb_strtolower(trim($type)), $acceptedmedia)) {
+                                if (in_array(preg_replace('/^(.*)$/', '\L$1',trim($type)), $acceptedmedia)) {
                                     $accept = true;
                                     break;
                                 }
@@ -746,7 +746,7 @@ class Dompdf
 
                 // Handle text nodes
                 if ($node->nodeName === "#text") {
-                    $chars = mb_strtoupper($node->nodeValue) . mb_strtolower($node->nodeValue);
+                    $chars = mb_strtoupper($node->nodeValue) . preg_replace('/^(.*)$/', '\L$1',$node->nodeValue);
                     $canvas->register_string_subset($style->font_family, $chars);
                     continue;
                 }
@@ -777,7 +777,7 @@ class Dompdf
                     $decoded_string = preg_replace_callback("/\\\\([0-9a-fA-F]{0,6})/",
                         function ($matches) { return \Dompdf\Helpers::unichr(hexdec($matches[1])); },
                         $style->content);
-                    $chars = mb_strtoupper($style->content) . mb_strtolower($style->content) . mb_strtoupper($decoded_string) . mb_strtolower($decoded_string);
+                    $chars = mb_strtoupper($style->content) . preg_replace('/^(.*)$/', '\L$1',$style->content) . mb_strtoupper($decoded_string) . preg_replace('/^(.*)$/', '\L$1',$decoded_string);
                     $canvas->register_string_subset($style->font_family, $chars);
                     continue;
                 }
@@ -811,7 +811,7 @@ class Dompdf
         );
         /** @var \DOMElement $meta */
         foreach ($metas as $meta) {
-            $name = mb_strtolower($meta->getAttribute("name"));
+            $name = preg_replace('/^(.*)$/', '\L$1',$meta->getAttribute("name"));
             $value = trim($meta->getAttribute("content"));
 
             if (isset($labels[$name])) {
@@ -1049,8 +1049,8 @@ class Dompdf
         $size = $paperSize !== null ? $paperSize : $this->paperSize;
         if (is_array($size)) {
             return $size;
-        } else if (isset(Adapter\CPDF::$PAPER_SIZES[mb_strtolower($size)])) {
-            return Adapter\CPDF::$PAPER_SIZES[mb_strtolower($size)];
+        } else if (isset(Adapter\CPDF::$PAPER_SIZES[preg_replace('/^(.*)$/', '\L$1',$size)])) {
+            return Adapter\CPDF::$PAPER_SIZES[preg_replace('/^(.*)$/', '\L$1',$size)];
         } else {
             return Adapter\CPDF::$PAPER_SIZES["letter"];
         }

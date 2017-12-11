@@ -208,12 +208,12 @@ function __($code)
     $translation = config_item('translation');
     
 
-    $label = $translation[sha1(mb_strtolower($code))];    
+    $label = $translation[sha1(preg_replace('/^(.*)$/', '\L$1',$code))];    
     // Hack to save new labels
     if(get_cookie("lang") == 'en' && $label == '')
     {
         $CI->Admin->setTableIgnore("languages",array("name" => "English","code" => 'en'));
-        $CI->Admin->setTableIgnore("translation",array("code" => sha1(mb_strtolower($code)),"translation" => $code,"code_lang" => 'en'));
+        $CI->Admin->setTableIgnore("translation",array("code" => sha1(preg_replace('/^(.*)$/', '\L$1',$code)),"translation" => $code,"code_lang" => 'en'));
     }
     if($label)
         return $label;
@@ -321,7 +321,7 @@ function getCountryCode()
 function getLang()
 {
 
-    $lang = mb_strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
+    $lang = preg_replace('/^(.*)$/', '\L$1',substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
     if($lang != '')
         return $lang;
     return config_item("default_lang");
@@ -383,16 +383,16 @@ function dslug($string)
 
 function _ucwords($str)
 {
-    return mb_convert_case(mb_strtolower($str), MB_CASE_TITLE, "UTF-8");
+    return mb_convert_case(preg_replace('/^(.*)$/', '\L$1',$str), MB_CASE_TITLE, "UTF-8");
 }
 function _strtolower($str)
 {
-    return mb_strtolower($str);
+    return preg_replace('/^(.*)$/', '\L$1',$str);
 }
 
 function _url_title($string,$remove=false)
 {
-    $string = mb_strtolower($string, 'UTF-8');    
+    $string = preg_replace('/^(.*)$/', '\L$1',$string, 'UTF-8');    
     if($remove)
     {
         $string = str_ireplace("'", "",$string);
@@ -731,7 +731,7 @@ function extractKeyWords($string) {
      
   $stopwords = array("these","after","that","have","this","then","como","with","from","will","your","you");
 
-  $string = preg_replace('/[\pP]/u', ' ', trim(preg_replace('/\s\s+/iu', ' ', mb_strtolower($string))));
+  $string = preg_replace('/[\pP]/u', ' ', trim(preg_replace('/\s\s+/iu', ' ', preg_replace('/^(.*)$/', '\L$1',$string))));
   
 
 
@@ -873,7 +873,7 @@ function getMeta($html,$tag)
     {
         $meta = getMetaTags($html);
         foreach ($meta as $key => $value) {
-             if(mb_strtolower($key) == mb_strtolower($tag))
+             if(preg_replace('/^(.*)$/', '\L$1',$key) == preg_replace('/^(.*)$/', '\L$1',$tag))
              {
                 return strip_tags($value);
              }

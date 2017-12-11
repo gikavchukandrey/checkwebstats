@@ -826,7 +826,7 @@ abstract class AbstractFrameDecorator extends Frame
      */
     function counter_value($id = self::DEFAULT_COUNTER, $type = "decimal")
     {
-        $type = mb_strtolower($type);
+        $type = preg_replace('/^(.*)$/', '\L$1', $type);
 
         if (!isset($this->_counters[$id])) {
             $this->_counters[$id] = 0;

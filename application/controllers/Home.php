@@ -216,7 +216,7 @@ class Home extends MY_Controller {
 			case  config_item("slug_filter"):	
 						
 				
-				$seg2 = mb_strtolower($seg2);
+				$seg2 = preg_replace('/^(.*)$/', '\L$1',$seg2);
 				
 				if($seg3 == '')
 				{
@@ -259,7 +259,7 @@ class Home extends MY_Controller {
 					$seg2_text = __("Made With");
 					$data 				= $this->db->query("SELECT {PRE}sites.*,{PRE}technologies.icon FROM {PRE}sites,{PRE}technologies WHERE {PRE}sites.url = {PRE}technologies.url AND {PRE}technologies.name = '$seg3' AND {PRE}sites.completed = 1 ORDER BY {PRE}sites.metaTitle ASC LIMIT $limit OFFSET $offset");    
 					$this->DATA['list'] 	= $data->result();
-					$this->DATA['title']		= __("Filter sites by ").__(ucfirst(mb_strtolower($seg2_text))).": <img  style='vertical-align: text-top ;height:40px;' src='".base_url()."assets/images/icons/".$this->DATA['list'][0]->icon."'> ".$seg3." - ".__("Page ").$seg4;
+					$this->DATA['title']		= __("Filter sites by ").__(ucfirst(preg_replace('/^(.*)$/', '\L$1',$seg2_text))).": <img  style='vertical-align: text-top ;height:40px;' src='".base_url()."assets/images/icons/".$this->DATA['list'][0]->icon."'> ".$seg3." - ".__("Page ").$seg4;
 
 				}
 				else
@@ -290,11 +290,11 @@ class Home extends MY_Controller {
 						$data 				= $this->Admin->getTable("sites",array("completed" => 1,$seg2 => urldecode($seg3)),"metaTitle asc",false,$offset,$limit);    
 					}
 					$this->DATA['list'] 	= $data->result();
-					$this->DATA['title'] 		= __("Filter sites by ").__(ucfirst(mb_strtolower($seg2_text))).": ".$seg3." - ".__("Page ").$seg4;	
+					$this->DATA['title'] 		= __("Filter sites by ").__(ucfirst(preg_replace('/^(.*)$/', '\L$1',$seg2_text))).": ".$seg3." - ".__("Page ").$seg4;	
 
 				}
 
-				$this->DATA['SEO']["title"] 		= __("Filter sites by ").__(ucfirst(mb_strtolower($seg2_text))).": ".$seg3." - ".__("Page ").$seg4;		
+				$this->DATA['SEO']["title"] 		= __("Filter sites by ").__(ucfirst(preg_replace('/^(.*)$/', '\L$1',$seg2_text))).": ".$seg3." - ".__("Page ").$seg4;		
 				
 
 				$recents 				= $this->Admin->getTable("sites",array("completed" => 1),"updated desc",false,false,7);    
@@ -511,8 +511,8 @@ class Home extends MY_Controller {
 					 	
 					 
 
-					 $this->DATA['SEO']["title"] 		= ucfirst(mb_strtolower($site_data->url))." ".__("- SEO Checker - Website Review");
-					 $this->DATA['SEO']["description"]  = ucfirst(mb_strtolower($site_data->url))." ".__(" - Website Review, SEO, Estimation Traffic and Earnings And Speed And Optimization Tips ");
+					 $this->DATA['SEO']["title"] 		= ucfirst(preg_replace('/^(.*)$/', '\L$1',$site_data->url))." ".__("- SEO Checker - Website Review");
+					 $this->DATA['SEO']["description"]  = ucfirst(preg_replace('/^(.*)$/', '\L$1',$site_data->url))." ".__(" - Website Review, SEO, Estimation Traffic and Earnings And Speed And Optimization Tips ");
 					 $this->DATA['site'] 		= $site_data;
 					 $this->DATA['recents'] 	= $recent;
 					 $this->DATA['shortcut'] = true;
