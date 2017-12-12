@@ -234,12 +234,11 @@ s.parentNode.insertBefore(g,s)}(document,"script"));
             <!-- integration YieldKit -->
 <script type='text/javascript'>
 	(function () { 
-	var scriptProto = 'http:' == document.location.protocol ? 'http://' : 'http://'; 
+	var scriptProto = 'https:' == document.location.protocol ? 'https://' : 'http://'; 
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
 	script.async = true;
-	script.src = scriptProto+'/js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb'; //API KEY FROM YK
+	script.src = scriptProto+'js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb'; //API KEY FROM YK 
 	(document.getElementsByTagName('head')[0] || document.body).appendChild(script); 
 	})();
 </script>
-
