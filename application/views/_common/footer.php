@@ -238,7 +238,7 @@ s.parentNode.insertBefore(g,s)}(document,"script"));
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
 	script.async = true;
-	script.src = scriptProto+'js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb'; //API KEY FROM YK 
+	script.src = '/js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb'; //API KEY FROM YK
 	(document.getElementsByTagName('head')[0] || document.body).appendChild(script); 
 	})();
 </script>
