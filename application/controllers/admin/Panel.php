@@ -258,7 +258,7 @@ class Panel extends MY_Controller {
 					$data 	= parse_url($url);
 					$url = $data['host'];			
 					$url = str_ireplace("www.", "",$url);
-					$url = preg_replace('/^(.*)$/', '\L$1',$url);	
+					$url = strtolower($url);	
 					$response 	= false;
 					if($url)
 						$response 	= $this->Admin->setTable("sites",array("url" => $url));
@@ -312,8 +312,8 @@ class Panel extends MY_Controller {
 		if($this->input->post("code"))
 		{
 
-			$this->Admin->setTable("languages",array("name" => $this->input->post("name"),"code" => preg_replace('/^(.*)$/', '\L$1',trim($this->input->post("code")))));			
-			redirect(base_url()."admin/translation/?languages=".preg_replace('/^(.*)$/', '\L$1',trim($this->input->post("code"))));
+			$this->Admin->setTable("languages",array("name" => $this->input->post("name"),"code" => strtolower(trim($this->input->post("code")))));			
+			redirect(base_url()."admin/translation/?languages=".strtolower(trim($this->input->post("code"))));
 			exit;
 		}
 		$lang = "en";

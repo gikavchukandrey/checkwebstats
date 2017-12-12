@@ -359,7 +359,7 @@ abstract class AbstractFrameReflower
 
             if (isset($match[1]) && $match[1] !== "") {
                 // counters?(...)
-                $match[1] = preg_replace('/^(.*)$/', '\L$1',trim($match[1]));
+                $match[1] = strtolower(trim($match[1]));
 
                 // Handle counter() references:
                 // http://www.w3.org/TR/CSS21/generate.html#content

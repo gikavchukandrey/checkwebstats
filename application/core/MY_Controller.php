@@ -222,7 +222,7 @@ class MY_Controller extends CI_Controller
       $temp_lang = getLang();
       if($this->input->get("lang"))
 
-        $temp_lang = preg_replace('/^(.*)$/', '\L$1', $this->input->get("lang"));
+        $temp_lang = strtolower( $this->input->get("lang"));
       foreach ($langs->result_array() as $key => $value) {
         if($temp_lang == $value['code'])
           $lang_user = $temp_lang;

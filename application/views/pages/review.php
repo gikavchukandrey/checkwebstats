@@ -864,7 +864,7 @@ if ($offerTitle){
 										<td class="text-xs-center "><?php echo $value; ?></td>
 										<td class="text-xs-center">
 											<?php
-												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1',$site->metaTitle),preg_replace('/^(.*)$/', '\L$1',$key)) !== FALSE)
+												if(mb_strpos(strtolower($site->metaTitle),strtolower($key)) !== FALSE)
 												{
 													?>
 													<i class="zmdi zmdi-check text-success"></i>
@@ -882,7 +882,7 @@ if ($offerTitle){
 
 										<td class="text-xs-center">
 											<?php
-												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1',$site->metaDescription),preg_replace('/^(.*)$/', '\L$1',$key)) !== FALSE)
+												if(mb_strpos(strtolower($site->metaDescription),strtolower($key)) !== FALSE)
 												{
 													?>
 													<i class="zmdi zmdi-check text-success"></i>
@@ -900,7 +900,7 @@ if ($offerTitle){
 
 										<td class="text-xs-center">
 											<?php
-												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1',$site->url),preg_replace('/^(.*)$/', '\L$1',$key)) !== FALSE)
+												if(mb_strpos(strtolower($site->url),strtolower($key)) !== FALSE)
 												{
 													?>
 													<i class="zmdi zmdi-check text-success"></i>

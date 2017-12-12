@@ -56,7 +56,7 @@ class Helpers
      */
     public static function build_url($protocol, $host, $base_path, $url)
     {
-        $protocol = preg_replace('/^(.*)$/', '\L$1',$protocol);
+        $protocol = strtolower($protocol);
         if (strlen($url) == 0) {
             //return $protocol . $host . rtrim($base_path, "/\\") . "/";
             return $protocol . $host . $base_path;
@@ -69,7 +69,7 @@ class Helpers
 
         $ret = $protocol;
 
-        if (!in_array(preg_replace('/^(.*)$/', '\L$1',$protocol), array("http://", "https://", "ftp://", "ftps://"))) {
+        if (!in_array(strtolower($protocol), array("http://", "https://", "ftp://", "ftps://"))) {
             //On Windows local file, an abs path can begin also with a '\' or a drive letter and colon
             //drive: followed by a relative path would be a drive specific default folder.
             //not known in php app code, treat as abs path
@@ -349,7 +349,7 @@ class Helpers
 
         $arr = parse_url($url);
         if ( isset($arr["scheme"]) ) {
-            $arr["scheme"] = preg_replace('/^(.*)$/', '\L$1',$arr["scheme"]);
+            $arr["scheme"] = strtolower($arr["scheme"]);
         }
 
         // Exclude windows drive letters...

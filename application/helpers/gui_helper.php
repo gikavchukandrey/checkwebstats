@@ -195,7 +195,7 @@ function show_register($id)
 function getScreenshot($url,$force=false)
 {
   _log("Screenshot Start");
-  $url      = preg_replace('/^(.*)$/', '\L$1',$url);
+  $url      = strtolower($url);
   $remote   = config_item("api_screenshot");
   if(!$remote)
     $remote   = "http://free.pagepeeker.com/v2/thumbs.php?size=l&url={url}";

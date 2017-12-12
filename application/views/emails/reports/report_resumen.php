@@ -39,7 +39,7 @@
 										<td style="text-align: center;border-bottom:1pt solid #E6E6E6;"><?php echo $value->pageSpeed; ?></td>
 										<td style="text-align: center;border-bottom:1pt solid #E6E6E6;"><?php echo $value->pagespeed_mobile; ?></td>
 										<td style="text-align: center;border-bottom:1pt solid #E6E6E6;"><?php echo $value->pagespeed_usability; ?></td>
-										<td style="text-align: center;border-bottom:1pt solid #E6E6E6;"><?php echo number_format($value->alexaLocal); ?><br><small><?php echo (preg_replace('/^(.*)$/', '\L$1', $value->alexaLocalCountry)); ?></small></td>
+										<td style="text-align: center;border-bottom:1pt solid #E6E6E6;"><?php echo number_format($value->alexaLocal); ?><br><small><?php echo (strtolower( $value->alexaLocalCountry)); ?></small></td>
 										<td style="text-align: center;border-bottom:1pt solid #E6E6E6;"><?php echo $value->domainAuthority; ?></td>
 										<td style="text-align: center; border-bottom:1pt solid #E6E6E6;font-size: 20px;background-color: #F1F4F4"><strong><?php echo $value->score; ?></strong></td>
 										

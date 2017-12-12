@@ -777,7 +777,7 @@ class Style
         }
 
         if ($prop !== "content" && is_string($val) && strlen($val) > 5 && mb_strpos($val, "url") === false) {
-            $val = preg_replace('/^(.*)$/', '\L$1',trim(str_replace(array("\n", "\t"), array(" "), $val)));
+            $val = strtolower(trim(str_replace(array("\n", "\t"), array(" "), $val)));
             $val = preg_replace("/([0-9]+) (pt|px|pc|em|ex|in|cm|mm|%)/S", "\\1\\2", $val);
         }
 
@@ -2551,7 +2551,7 @@ class Style
     {
         $length_re = "/(\d+\s*(?:pt|px|pc|em|ex|in|cm|mm|%))/";
 
-        $val = preg_replace('/^(.*)$/', '\L$1',$val);
+        $val = strtolower($val);
 
         if ($val === "auto") {
             return;

@@ -171,7 +171,7 @@ class FontMetrics
     public function registerFont($style, $remoteFile, $context = null)
     {
         $fontDir = $this->getOptions()->getFontDir();
-        $fontname = preg_replace('/^(.*)$/', '\L$1',$style["family"]);
+        $fontname = strtolower($style["family"]);
         $families = $this->getFontFamilies();
 
         $entry = array();
@@ -408,7 +408,7 @@ class FontMetrics
      */
     public function getFamily($family)
     {
-        $family = str_replace(array("'", '"'), "", preg_replace('/^(.*)$/', '\L$1',$family));
+        $family = str_replace(array("'", '"'), "", strtolower($family));
 
         if (isset($this->fontLookup[$family])) {
             return $this->fontLookup[$family];
@@ -483,7 +483,7 @@ class FontMetrics
      */
     public function setFontFamily($fontname, $entry)
     {
-        $this->fontLookup[preg_replace('/^(.*)$/', '\L$1',$fontname)] = $entry;
+        $this->fontLookup[strtolower($fontname)] = $entry;
     }
 
     /**

@@ -182,13 +182,13 @@ class CPDF implements Canvas
     {
         if (is_array($paper)) {
             $size = $paper;
-        } else if (isset(self::$PAPER_SIZES[preg_replace('/^(.*)$/', '\L$1',$paper)])) {
-            $size = self::$PAPER_SIZES[preg_replace('/^(.*)$/', '\L$1',$paper)];
+        } else if (isset(self::$PAPER_SIZES[strtolower($paper)])) {
+            $size = self::$PAPER_SIZES[strtolower($paper)];
         } else {
             $size = self::$PAPER_SIZES["letter"];
         }
 
-        if (preg_replace('/^(.*)$/', '\L$1',$orientation) === "landscape") {
+        if (strtolower($orientation) === "landscape") {
             list($size[2], $size[3]) = array($size[3], $size[2]);
         }
 

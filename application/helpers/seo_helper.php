@@ -468,7 +468,7 @@ function getStatsData($site,$technologies)
 	$optimize['gzip'] = 'error';
 	$errors++;
 	foreach ($technologies as $key => $value) {
-			if(preg_replace('/^(.*)$/', '\L$1',$value->name)  == 'gzip')
+			if(strtolower($value->name)  == 'gzip')
 			{
 				$optimize['gzip'] = 'success';
 				$errors--;				
@@ -608,7 +608,7 @@ function getGooglePlusCount($url)
 }
 function inHX($html,$string,$hx = "h1")
 {
-    $h1 = getTextBetweenTags(preg_replace('/^(.*)$/', '\L$1',$html),$hx);
+    $h1 = getTextBetweenTags(strtolower($html),$hx);
     
     foreach ($h1 as $key => $value) {
         if(mb_strpos($value, $string) !== FALSE)

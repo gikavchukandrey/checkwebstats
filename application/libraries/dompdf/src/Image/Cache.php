@@ -59,7 +59,7 @@ class Cache
     {
         self::$_dompdf = $dompdf;
         
-        $protocol = preg_replace('/^(.*)$/', '\L$1',$protocol);
+        $protocol = strtolower($protocol);
         $parsed_url = Helpers::explode_url($url);
         $message = null;
 

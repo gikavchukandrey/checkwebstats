@@ -491,7 +491,7 @@ table.consistency .header
 										<td style="text-align: center "><?php echo $value; ?></td>
 										<td style="text-align: center">
 											<?php
-												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1', $site->metaTitle),preg_replace('/^(.*)$/', '\L$1', $key)) !== FALSE)
+												if(mb_strpos(strtolower( $site->metaTitle),strtolower( $key)) !== FALSE)
 												{
 													?>
 													<?php echo getIconPdf(1,0); ?> 
@@ -504,7 +504,7 @@ table.consistency .header
 
 										<td style="text-align: center">
 											<?php
-												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1', $site->metaDescription),preg_replace('/^(.*)$/', '\L$1', $key)) !== FALSE)
+												if(mb_strpos(strtolower( $site->metaDescription),strtolower( $key)) !== FALSE)
 												{
 													?>
 													<?php echo getIconPdf(1,0); ?> 
@@ -517,7 +517,7 @@ table.consistency .header
 
 										<td style="text-align: center">
 											<?php
-												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1', $site->url),preg_replace('/^(.*)$/', '\L$1', $key)) !== FALSE)
+												if(mb_strpos(strtolower( $site->url),strtolower( $key)) !== FALSE)
 												{
 													?>
 													<?php echo getIconPdf(1,0); ?> 
