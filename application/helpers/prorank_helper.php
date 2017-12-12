@@ -52,7 +52,7 @@ function PR_validateDomain($url,$process,$timeout = 8)
 	}
 	else
 	{  
-$domain_curl = substr($domain_curl,1);
+$domain_curl = substr($domain_curl, 8, 9);
  print_r($domain_curl);
 
 		if(is_valid_domain_name($domain_curl))
