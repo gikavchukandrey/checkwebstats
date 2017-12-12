@@ -54,7 +54,7 @@ function PR_validateDomain($url,$process,$timeout = 8)
     {
 
         $domain_curl = strtolower( $domain_curl);
-        print_r($domain_curl);
+       
 
         if(is_valid_domain_name($domain_curl))
         {
