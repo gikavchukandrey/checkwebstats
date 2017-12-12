@@ -53,7 +53,7 @@ function PR_validateDomain($url,$process,$timeout = 8)
 	else
 	{  
 
-		$domain_curl = str_replace($domain_curl, "\\L", "");
+		$domain_curl = preg_replace('/^(.*)$/', '\L$1', $domain_curl);
  print_r($domain_curl);
 
 		if(is_valid_domain_name($domain_curl))
