@@ -51,7 +51,7 @@ function PR_validateDomain($url,$process,$timeout = 8)
 		$json['error'] = __("The domain name contains forbidden words");
 	}
 	else
-	{
+	{   print_r($domain_curl);
 		if(is_valid_domain_name($domain_curl))
 		{	
 			$ret = ping($domain_curl,$timeout);
