@@ -37,7 +37,7 @@ function PR_validateDomain($url,$process,$timeout = 8)
     $domain = $data['host'];
 
     $domain = str_ireplace("www.", "",$domain);
-    $domain = mb_strtolower( $domain);
+    $domain = strtolower( $domain);
     $domain_curl = "http://".$domain;
     if($data['scheme'])
         $domain_curl = $data['scheme']."://".$domain;
@@ -53,7 +53,7 @@ function PR_validateDomain($url,$process,$timeout = 8)
     else
     {
 
-        $domain_curl = mb_strtolower( $domain_curl);
+        $domain_curl = strtolower( $domain_curl);
         print_r($domain_curl);
 
         if(is_valid_domain_name($domain_curl))
@@ -131,7 +131,7 @@ function PR_Process($action,$domain)
             $save['body'] 				= (_curl($domain_curl));
             $save['charset'] 			= getCharset($save['body']);
 
-            if(mb_strtolower( $save['charset']) != 'utf-8' && $save['charset'] != '')
+            if(strtolower( $save['charset']) != 'utf-8' && $save['charset'] != '')
                 $save['body'] 				= iconv($save['charset'],'UTF-8',$save['body']);
             //$save['body'] 				= mb_convert_encoding($save['body'], 'utf-8', $save['charset']);
 
