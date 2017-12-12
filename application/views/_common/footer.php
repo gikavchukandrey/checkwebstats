@@ -234,7 +234,7 @@ s.parentNode.insertBefore(g,s)}(document,"script"));
             <!-- integration YieldKit -->
 <script type='text/javascript'>
 	(function () { 
-	var scriptProto = 'https:' == document.location.protocol ? 'http://' : 'http://'; 
+	var scriptProto = 'https:' == document.location.protocol ? 'https://' : 'https://'; 
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
 	script.async = true;
