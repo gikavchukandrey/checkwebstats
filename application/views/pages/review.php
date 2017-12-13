@@ -41,15 +41,15 @@
 
 
     <meta property="og:image" content="http://lead.dev/assets/images/facebook_banner.jpg">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://lead.dev/assets/css/style.css?v=2.2.0">
 
 
     <link rel="icon" type="image/png" href="http://lead.dev/assets/images/favicon.png">
     <style>
-        @import 'http://fonts.googleapis.com/css?family=Roboto:300,400';
+        @import 'https://fonts.googleapis.com/css?family=Roboto:300,400';
         body{
             background-color: #F3F3F3;
             color: #373a3c;
@@ -278,7 +278,7 @@ global $allMerchants;
 $ch = curl_init();
 
 // Set url
-curl_setopt($ch, CURLOPT_URL, "http://api.Yadore.com/v1/merchant?market=$market");
+curl_setopt($ch, CURLOPT_URL, "https://api.Yadore.com/v1/merchant?market=$market");
 
 // Set method
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -359,7 +359,7 @@ if ($merchantId){
 		$ch = curl_init();
 
 		// Set url
-		curl_setopt($ch, CURLOPT_URL, "http://api.Yadore.com/v1/offer?market=$merchantMarket&merchantId=$merchantId&offset=$offset");
+		curl_setopt($ch, CURLOPT_URL, "https://api.Yadore.com/v1/offer?market=$merchantMarket&merchantId=$merchantId&offset=$offset");
 
 		// Set method
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -399,10 +399,7 @@ if ($merchantId){
 
 
 
-if ($offerTitle){
 
-print_r($site);
-?>
 		<div class="col-lg-9 col-md-8">
 
 			<div class="card card-block">
@@ -430,9 +427,7 @@ print_r($site);
 				</div>
 			</div>
 		</div>
-<?php
-	}
-?>
+
 		<div class="col-lg-9 col-md-8">
 
 			<div class="card card-block">
@@ -681,11 +676,11 @@ print_r($site);
 				<?php
 				$url_share =  urlencode(base_url().$site->url);
 				?>
-				<a href="#" data-url="http://www.facebook.com/sharer/sharer.php?u=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-facebook col-md-2 col-xs-12"><i class="zmdi zmdi-facebook"></i></a>
-				<a href="#" data-url="http://twitter.com/home?status=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-twitter col-md-2 col-xs-12"><i class="zmdi zmdi-twitter"></i></a>
-				<a href="#" data-url="http://plus.google.com/share?url=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-google col-md-2 col-xs-12"><i class="zmdi zmdi-google-plus"></i></a>
-				<a href="#" data-url="http://www.linkedin.com/shareArticle?mini=true&title=&summary=<?php echo $url_share; ?>&source=<?php echo $url_share; ?>&url=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-linkedin col-md-2 col-xs-12"><i class="zmdi zmdi-linkedin"></i></a>
-				<a href="#" data-url="http://pinterest.com/pin/create/button/?media=<?php echo $url_share; ?>&description=<?php echo $this->metaTitle; ?>&url=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-pinterest col-md-2 col-xs-12"><i class="zmdi zmdi-pinterest"></i></a>
+				<a href="#" data-url="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-facebook col-md-2 col-xs-12"><i class="zmdi zmdi-facebook"></i></a>
+				<a href="#" data-url="https://twitter.com/home?status=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-twitter col-md-2 col-xs-12"><i class="zmdi zmdi-twitter"></i></a>
+				<a href="#" data-url="https://plus.google.com/share?url=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-google col-md-2 col-xs-12"><i class="zmdi zmdi-google-plus"></i></a>
+				<a href="#" data-url="https://www.linkedin.com/shareArticle?mini=true&title=&summary=<?php echo $url_share; ?>&source=<?php echo $url_share; ?>&url=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-linkedin col-md-2 col-xs-12"><i class="zmdi zmdi-linkedin"></i></a>
+				<a href="#" data-url="https://pinterest.com/pin/create/button/?media=<?php echo $url_share; ?>&description=<?php echo $this->metaTitle; ?>&url=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-pinterest col-md-2 col-xs-12"><i class="zmdi zmdi-pinterest"></i></a>
 				<a href="#" data-url="mailto:?&body=<?php echo $url_share; ?>" class="btn btn-share btn-xs btn-info col-md-2 col-xs-12"><i class="zmdi zmdi-email"></i></a>
 			</div>
 			<div class="clearfix"></div>
@@ -1631,7 +1626,7 @@ print_r($site);
 
 				<div class="row p-t-2 ">
 					<div class="col-lg-4">
-						<strong><i class="zmdi <?php echo converTypeToIcon($optimize['http']); ?> text-<?php echo $optimize['http']; ?> check"></i> <?php echo __("SSL Secure"); ?></strong>
+						<strong><i class="zmdi <?php echo converTypeToIcon($optimize['https']); ?> text-<?php echo $optimize['https']; ?> check"></i> <?php echo __("SSL Secure"); ?></strong>
 						<small class="d-block subtitle">
 							<i class="zmdi zmdi-dot-circle"></i>
 							<i class="zmdi zmdi-dot-circle text-muted"></i>
@@ -1639,7 +1634,7 @@ print_r($site);
 						</small>
 					</div>
 					<div class="col-lg-8">
-						<?php echo createRecomendation($optimize['http'],'success',__("Congratulations! Your site have Support to http"),__("Warning! Your website is not SSL secured (http).")); ?>
+						<?php echo createRecomendation($optimize['https'],'success',__("Congratulations! Your site have Support to HTTPS"),__("Warning! Your website is not SSL secured (HTTPS).")); ?>
 					</div>
 				</div>
 
@@ -1887,11 +1882,11 @@ print_r($site);
 					<div class="row p-t-2 ">
 						<div class="col-lg-6 img-alexa">
 							<strong><?php echo __("Traffic"); ?></strong>
-							<img class="img-fluid" src="http://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&r=1y&t=2&z=30&c=1&h=300&w=500&u=<?php echo $site->url; ?>">
+							<img class="img-fluid" src="https://traffic.alexa.com/graph?o=lt&y=t&b=ffffff&n=666666&f=999999&r=1y&t=2&z=30&c=1&h=300&w=500&u=<?php echo $site->url; ?>">
 						</div>
 						<div class="col-lg-6 img-alexa">
 							<strong><?php echo __("Search"); ?></strong>
-							<img class="img-fluid" src="http://traffic.alexa.com/graph?o=lt&y=q&b=ffffff&n=666666&f=999999&r=1y&t=2&z=30&c=1&h=300&w=500&u=<?php echo $site->url; ?>">
+							<img class="img-fluid" src="https://traffic.alexa.com/graph?o=lt&y=q&b=ffffff&n=666666&f=999999&r=1y&t=2&z=30&c=1&h=300&w=500&u=<?php echo $site->url; ?>">
 						</div>
 
 					</div>
