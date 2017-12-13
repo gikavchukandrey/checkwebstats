@@ -26,192 +26,141 @@
 ?>
 <!--<img src="data:image/jpeg;base64, <?php echo $image; ?>">-->
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-<title><?php echo $SEO['title']; ?></title>
-<meta name="description" content="<?php echo ((strip_tags($SEO['description']))); ?>">
-<meta name="google-site-verification" content="<?php echo config_item("gwt"); ?>" />
-<?php if(config_item("chromeappid")){?>
-    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/<?php echo config_item("chromeappid"); ?>">
-<?php } ?>
 
 
-<?php
 
-if($SEO['meta'])
-{
-    $image = false;
-    foreach ($SEO['meta'] as $key => $value) {
-        echo "<".$value['type']." ";
-        foreach ($value['attr'] as $key => $value) {
-            echo $key.'="'.$value.'" ';
-            if($value == 'og:image')
-                $image = true;
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Visitpalmsprings.com - SEO Checker - Website Review</title>
+    <meta name="description" content="Visitpalmsprings.com  - Website Review, SEO, Estimation Traffic and Earnings And Speed And Optimization Tips ">
+    <meta name="google-site-verification" content="">
+
+
+
+    <meta property="og:image" content="http://lead.dev/assets/images/facebook_banner.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://lead.dev/assets/css/style.css?v=2.2.0">
+
+
+    <link rel="icon" type="image/png" href="http://lead.dev/assets/images/favicon.png">
+    <style>
+        @import 'https://fonts.googleapis.com/css?family=Roboto:300,400';
+        body{
+            background-color: #F3F3F3;
+            color: #373a3c;
+            font-family: 'Roboto', sans-serif;
         }
-        echo ">\n";
-    }
-}
-echo $SEO['meta_raw'];
-?>
-<?php if(!$image){ ?>
-    <meta property="og:image" content="<?php echo base_url(); ?>assets/images/facebook_banner.jpg">
-<?php } ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+        .text-muted{
+            color: #818a91 !important;
+        }
+        .bg-home,
+        .shortcut ul li.profile div
+        {
+            color: #FFF;
+            background: #272728 url("assets/images/bg.jpg") center bottom no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?v=<?php echo config_item("version"); ?>">
+        #mainModal .modal-header
+        {
 
+            background: #272728 url("assets/images/bg.jpg") center center no-repeat;
+            background-size: cover;
 
-<link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/favicon.png">
-<style>
-    @import 'https://fonts.googleapis.com/css?family=<?php echo config_item("default_font"); ?>:300,400';
-    body{
-        background-color: <?php echo config_item("style_body_color"); ?>;
-        color: <?php echo config_item("style_main_text_color"); ?>;
-        font-family: '<?php echo config_item("default_font"); ?>', sans-serif;
-    }
-    .text-muted{
-        color: <?php echo config_item("style_secondary_text_color"); ?> !important;
-    }
-    .bg-home,
-    .shortcut ul li.profile div
-    {
-        color: #FFF;
-        background: #272728 url("<?php echo config_item("background_home"); ?>") center bottom no-repeat;
-        background-size: cover;
-        background-attachment: fixed;
-    }
+        }
+        a,
+        .btn-link,
+        a.page-link,
+        .card.first .fot form button{
+            color:#3C8DBC !important;
+        }
 
-    #mainModal .modal-header
-    {
+        .page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover
+        {
+            background-color: #3C8DBC !important;
+            border-color: #3C8DBC !important;
+        }
+        .bg-blue-dark,
+        .keyword-cloud .value,
+        .btn-success,
+        .btn-blue,
+        span.score,
+        .register-user a,
+        .shortcut ul li.register-login  a,
+        h2.nice-title span,
+        .card .features span.title,
+        .btn-gradient.selected,
+        .btn-gradient:hover
+        {
+            background-color: #3C8DBC !important;
+        }
+        .btn-success,
+        .shortcut ul li.register-login  a
+        {
+            border-left: 8px solid #306F94 !important;
+        }
+        .shortcut ul li  a{
+            color: #333333 !important;
+        }
+        .btn-success:hover,
+        .btn-success:active,
+        .btn-success:focus{
+            background-color: #306F94 !important;
+            border-color: #306F94 !important;
+            border-left: 8px solid #306F94 !important;
 
-        background: #272728 url("<?php echo config_item("background_modal"); ?>") center center no-repeat;
-        background-size: cover;
+        }
+        .bg-register,
+        h2.nice-title i,
+        .menu-toggle .plan
+        {
+            background-color: #306F94 !important;
+        }
+        .footer-c{
+            background-color: #333333 ;
+            color: #999 ;
+        }
+        .footer-c h2,
+        .footer-c a
+        {
+            color: #999 !important;
+        }
 
-    }
-    a,
-    .btn-link,
-    a.page-link,
-    .card.first .fot form button{
-        color:<?php echo config_item("style_link_color"); ?> !important;
-    }
+        .progress-main::-webkit-progress-value {
+            border-radius: 3px;
+            box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+            background:
+                    -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+                    -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+                    -webkit-linear-gradient(left, #3C8DBC, #306F94);
 
-    .page-item.active .page-link, .page-item.active .page-link:focus, .page-item.active .page-link:hover
-    {
-        background-color: <?php echo config_item("style_main_color"); ?> !important;
-        border-color: <?php echo config_item("style_main_color"); ?> !important;
-    }
-    .bg-blue-dark,
-    .keyword-cloud .value,
-    .btn-success,
-    .btn-blue,
-    span.score,
-    .register-user a,
-    .shortcut ul li.register-login  a,
-    h2.nice-title span,
-    .card .features span.title,
-    .btn-gradient.selected,
-    .btn-gradient:hover
-    {
-        background-color: <?php echo config_item("style_main_color"); ?> !important;
-    }
-    .btn-success,
-    .shortcut ul li.register-login  a
-    {
-        border-left: 8px solid <?php echo config_item("style_secondary_color"); ?> !important;
-    }
-    .shortcut ul li  a{
-        color: <?php echo config_item("style_link_sidebar_color"); ?> !important;
-    }
-    .btn-success:hover,
-    .btn-success:active,
-    .btn-success:focus{
-        background-color: <?php echo config_item("style_secondary_color"); ?> !important;
-        border-color: <?php echo config_item("style_secondary_color"); ?> !important;
-        border-left: 8px solid <?php echo config_item("style_secondary_color"); ?> !important;
-
-    }
-    .bg-register,
-    h2.nice-title i,
-    .menu-toggle .plan
-    {
-        background-color: <?php echo config_item("style_secondary_color"); ?> !important;
-    }
-    .footer-c{
-        background-color: <?php echo config_item("style_footer_color"); ?> ;
-        color: <?php echo config_item("style_footer_text_color"); ?> ;
-    }
-    .footer-c h2,
-    .footer-c a
-    {
-        color: <?php echo config_item("style_footer_text_color"); ?> !important;
-    }
-
-    .progress-main::-webkit-progress-value {
-        border-radius: 3px;
-        box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
-        background:
-                -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
-                -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
-                -webkit-linear-gradient(left, <?php echo config_item("style_main_color"); ?>, <?php echo config_item("style_secondary_color"); ?>);
-
-        /* Looks great, now animating it */
-        background-size: 50px 30px, 100% 100%, 100% 100%;
-        -webkit-animation: move 5s linear 0 infinite;
-    }
-
-
-    <?php echo config_item("custom_css"); ?>
-
-</style>
-<?php echo config_item("custom_code_header"); ?>
-
-
-<script>
-    var noReload = false;
-    var base_url = '<?php echo base_url(); ?>';
-    var csfrData = {};
-    csfrData['<?php echo $this->security->get_csrf_token_name(); ?>'] = '<?php echo $this->security->get_csrf_hash(); ?>';
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" >
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+            /* Looks great, now animating it */
+            background-size: 50px 30px, 100% 100%, 100% 100%;
+            -webkit-animation: move 5s linear 0 infinite;
+        }
 
 
 
+    </style>
+
+
+    <script>
+        var noReload = false;
+        var base_url = 'http://lead.dev/';
+        var csfrData = {};
+        csfrData['token_key'] = '621ecbb04578e2c5e283d95c91f3666e';
+    </script>
+
+    <script type="text/javascript" async="" src="//.disqus.com/embed.js"></script><script type="text/javascript" async="" src="http://js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb"></script></head>
 
 
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/app.js?v=<?php echo config_item("version"); ?>"></script>
-
-<?php echo $_SCRIPTS; ?>
-<script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php if(config_item("gcaptcha_secret")){ ?>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-<?php } ?>
 <div class="container">
 <div class="alert alert-warning m-t-2">
 <strong><i class="zmdi zmdi-alert-circle"></i> <?php echo __("Historical Data: "); ?></strong> <?php echo __("This is a cache of"); ?> <?php echo $site->url; ?>
