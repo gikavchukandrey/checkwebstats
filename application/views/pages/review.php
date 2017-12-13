@@ -448,7 +448,7 @@ if(is_logged())
 
 
                 ?>
-                <div class="col-lg-9 col-md-8">
+                <div class="col-lg-9 1 col-md-8">
 
                 <div class="card card-block">
                 <div class="col-lg-12">
@@ -478,7 +478,7 @@ if(is_logged())
             <?php
         }
         ?>
-        <div class="col-lg-9 col-md-8">
+        <div class="col-lg-9 2 col-md-8">
 
             <div class="card card-block">
                 <div class="col-lg-12">
@@ -607,7 +607,7 @@ if(is_logged())
         </div>
 
 
-        <div class="col-lg-9 col-md-8">
+        <div class="col-lg-9 3 col-md-8">
             <h2 class="nice-title m-t-0 "><i class=""><?php echo $site->score; ?></i>
                 <span><?php echo badWords($site->url); ?> </span>
                 <small class="hidden-sm-down pull-lg-right m-r-2">
