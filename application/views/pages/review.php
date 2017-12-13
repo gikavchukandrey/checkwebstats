@@ -392,7 +392,6 @@ if(is_logged())
 
 
         ##yadore end
-        if ($merchantId){
             $offset = $offerCount / 20;
             $offset = floor($offset);
             $offset = $offset - 1;
@@ -444,7 +443,6 @@ if(is_logged())
 
 
 
-            if ($offerTitle){
 
 
                 ?>
@@ -468,7 +466,6 @@ if(is_logged())
                     echo "<a target='_blank' onclick=\"window.open('$clickUrl');\">".substr($offerTitle, 0, 45)."</a>";
                     echo "</div>";
                 }
-            }
 
             ?>
             </div>
@@ -476,7 +473,6 @@ if(is_logged())
             </div>
             </div>
             <?php
-        }
         ?>
         <div class="col-lg-9 2 col-md-8">
 
