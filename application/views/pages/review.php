@@ -30,7 +30,6 @@
 <div class="container">
 <div class="alert alert-warning m-t-2">
 <strong><i class="zmdi zmdi-alert-circle"></i> <?php echo __("Historical Data: "); ?></strong> <?php echo __("This is a cache of"); ?> <?php echo $site->url; ?>
-<a class="pull-right " style="color:#FFF" href="<?php echo base_url(); ?><?php echo $site->url; ?>"><?php echo __("Go to last version"); ?></a>
 
 </div>
 </div>
@@ -67,7 +66,6 @@
 				?>
 
 
-			<?php if(count($similar)>1){ ?>
 			<div class="card card-block hidden-sm-down">
 				<h2 class="small  p-b-1"><?php echo __("Similar Ranking"); ?></h2>
 				<?php foreach ($similar as $key => $value){
@@ -82,9 +80,7 @@
 				</div>
 				<?php } } ?>
 			</div>
-			<?php } ?>
 
-			<?php if(count($historicalData)>=1){ ?>
 			<div class="card card-block">
 				<h2 class="small  p-b-1"><?php echo __("Historical Data"); ?></h2>
 				<?php foreach ($historicalData as $key => $value){
@@ -103,9 +99,7 @@
 				<?php }  ?>
 				<a class="d-block m-t-1 text-xs-center" href="<?php echo base_url(); ?><?php echo config_item("slug_historical"); ?>/<?php echo $site->url; ?>"><?php echo __("View all historical data"); ?></a>
 			</div>
-			<?php } ?>
 
-			<?php if(count($recents)>1){ ?>
 			<div class="card card-block hidden-sm-down">
 				<h2 class="small p-b-1"><?php echo __("Latest Sites"); ?></h2>
 				<?php foreach ($recents as $key => $value){
@@ -122,9 +116,7 @@
 				</div>
 				<?php } } ?>
 			</div>
-			<?php } ?>
 
-			<?php if(count($top['technologies'])>1){ ?>
 			<div class="card card-block hidden-sm-down">
 				<h2 class="small p-b-1"><?php echo __("Top Technologies"); ?></h2>
 				<?php foreach ($top['technologies'] as $key => $value){
@@ -141,7 +133,6 @@
 				</div>
 				<?php }  ?>
 			</div>
-			<?php } ?>
 
 		</div>
 		<?php
@@ -640,7 +631,6 @@ if ($offerTitle){
 
 				?>
 
-		<?php if(in_array("authority", $modules)){ ?>
 			<div class="card card-block" id="authority">
 
 				<?php if(in_array("authority", $blocks)){ ?>
@@ -688,10 +678,8 @@ if ($offerTitle){
 
 			</div>
 
-			<?php } ?>
 
 
-			<?php if(in_array("meta", $modules)){ ?>
 
 			<div class="card card-block" id="meta">
 				<?php if(in_array("meta", $blocks)){ ?>
@@ -1082,10 +1070,8 @@ if ($offerTitle){
 
 			</div>
 
-			<?php } ?>
 
 
-			<?php if(in_array("social", $modules)){ ?>
 
 				<h2 class="nice-title "><i class="zmdi zmdi-share"></i><span><?php echo __("Social Data"); ?></span></h2>
 
@@ -1131,10 +1117,8 @@ if ($offerTitle){
 
 			</div>
 
-			<?php } ?>
 
 
-			<?php if(in_array("traffic", $modules)){ ?>
 
 
 			<h2 class="nice-title "><i class="zmdi zmdi-traffic"></i><span><?php echo __("Estimation Traffic and Earnings"); ?></span></h2>
@@ -1222,7 +1206,6 @@ if ($offerTitle){
 				<?php } else{ show_register('traffic'); }?>
 			</div>
 
-			<?php } ?>
 
 			<?php
 			if(!$noADS)
@@ -1237,7 +1220,6 @@ if ($offerTitle){
 			<h2 class="nice-title "><i class="zmdi zmdi-code-setting"></i><span><?php echo __("Technologies"); ?></span></h2>
 
 			<div class="card card-block">
-			<?php if(in_array("technologies", $blocks)){ ?>
 			<?php foreach ($technologies as $key => $value) {
 								?>
 
@@ -1255,7 +1237,6 @@ if ($offerTitle){
 
 			<?php } ?>
 
-			<?php } else{ show_register('technologies'); }?>
 
 			</div>
 
@@ -2020,7 +2001,6 @@ if ($offerTitle){
 
 			<?php } ?>
 
-			<?php if(config_item("disqus_shortname") && !$cached){ ?>
 
 				<h2 class="nice-title "><i class="zmdi zmdi-comment-alt-text"></i><span><?php echo __("Comments"); ?></span></h2>
 				<div class="card card-block">
@@ -2047,7 +2027,6 @@ if ($offerTitle){
 
 				</div>
 
-<?php } ?>
 
 			</div>
 		</div>
