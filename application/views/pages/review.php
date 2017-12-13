@@ -26,8 +26,7 @@
 ?>
 <!--<img src="data:image/jpeg;base64, <?php echo $image; ?>">-->
 
-<?php if($cached){
-?>
+
 <div class="container">
 <div class="alert alert-warning m-t-2">
 <strong><i class="zmdi zmdi-alert-circle"></i> <?php echo __("Historical Data: "); ?></strong> <?php echo __("This is a cache of"); ?> <?php echo $site->url; ?>
@@ -35,9 +34,7 @@
 
 </div>
 </div>
-<?php
-}
-?>
+
 <div class="container <?php if($cached){ echo 'historical'; }?>" id="main">
 	<div class="row">
 
@@ -864,7 +861,7 @@ if ($offerTitle){
 										<td class="text-xs-center "><?php echo $value; ?></td>
 										<td class="text-xs-center">
 											<?php
-												if(mb_strpos(strtolower($site->metaTitle),strtolower($key)) !== FALSE)
+												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1',$site->metaTitle),preg_replace('/^(.*)$/', '\L$1',$key)) !== FALSE)
 												{
 													?>
 													<i class="zmdi zmdi-check text-success"></i>
@@ -882,7 +879,7 @@ if ($offerTitle){
 
 										<td class="text-xs-center">
 											<?php
-												if(mb_strpos(strtolower($site->metaDescription),strtolower($key)) !== FALSE)
+												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1',$site->metaDescription),preg_replace('/^(.*)$/', '\L$1',$key)) !== FALSE)
 												{
 													?>
 													<i class="zmdi zmdi-check text-success"></i>
@@ -900,7 +897,7 @@ if ($offerTitle){
 
 										<td class="text-xs-center">
 											<?php
-												if(mb_strpos(strtolower($site->url),strtolower($key)) !== FALSE)
+												if(mb_strpos(preg_replace('/^(.*)$/', '\L$1',$site->url),preg_replace('/^(.*)$/', '\L$1',$key)) !== FALSE)
 												{
 													?>
 													<i class="zmdi zmdi-check text-success"></i>
