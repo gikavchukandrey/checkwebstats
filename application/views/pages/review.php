@@ -361,10 +361,7 @@ if (is_logged()) {
                     }
 
                     $j = 0;
-
-
-                    
-                    while ($row = mysql_connect($result2)) {
+                    while ($row = mysqli_connect($result2)) {
                         if ($j == 0) {
                             echo "<div class='row'>";
                         }
