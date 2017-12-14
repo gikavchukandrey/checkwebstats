@@ -13,23 +13,7 @@
     <?php } ?>
 
 
-     <?php
-
-    if($SEO['meta'])
-    {
-    $image = false;
-      foreach ($SEO['meta'] as $key => $value) {
-        echo "<".$value['type']." ";
-        foreach ($value['attr'] as $key => $value) {
-          echo $key.'="'.$value.'" ';
-          if($value == 'og:image')
-            $image = true;
-        }
-        echo ">\n";
-      }
-    }
-    echo $SEO['meta_raw'];
-    ?>  
+      
     <?php if(!$image){ ?>
      <meta property="og:image" content="<?php echo base_url(); ?>assets/images/facebook_banner.jpg">    
     <?php } ?>
@@ -153,7 +137,10 @@
    
 </head>
   <body>
-    
+    <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+     ?>
     <?php echo $_NAVBAR; ?>
     <div class="hide-menu">
 
@@ -255,9 +242,7 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <?php if(config_item("chromeappid")){ ?>
 
-    <a href="#" class="hidden-md-down" onclick="chrome.webstore.install();localStorage.chrome=1;return false;" id="install-button"><i class="fa fa-chrome"></i> <?php echo __("Add extension to Chrome") ; ?></a>
     <script>
     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
@@ -268,7 +253,6 @@
       document.getElementById('install-button').style.display = 'none';
     </script>
 
-    <?php } ?>
 
   </body>
 </html>
