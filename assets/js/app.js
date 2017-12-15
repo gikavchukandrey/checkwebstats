@@ -121,7 +121,7 @@ $(function () {
     	event.preventDefault();
     	var idsite = $(this).attr("data-idsite");
     	var action = $(this).attr("data-action");
-    	
+
 		$.post(base_url+"backend/bookmark", {idsite: idsite,action:action}, function(data, textStatus, xhr) {
     		if(data.error)
     		{
@@ -223,6 +223,7 @@ function validateDomain(url,manual)
 
 	$(".process-website").text(url);
 	$("#monitor").addClass('hide');
+    base_url =  window.location.origin;
 	$.post(base_url+"backend/validate", {url: url}, function(data, textStatus, xhr) {
 		if(data.process)
 		{
