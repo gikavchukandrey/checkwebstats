@@ -224,7 +224,7 @@ function validateDomain(url,manual)
 	$(".process-website").text(url);
 	$("#monitor").addClass('hide');
     var new_url =  window.location.origin;
-	$.post(new_url+"backend/validate", {url: url}, function(data, textStatus, xhr) {
+	$.post(new_url+"/backend/validate", {url: url}, function(data, textStatus, xhr) {
 		if(data.process)
 		{
 
