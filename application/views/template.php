@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?v=<?php echo config_item("version"); ?>">
+    <link rel="stylesheet" href="//assets/css/style.css?v=<?php echo config_item("version"); ?>">
 
 
-    <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="//assets/images/favicon.png">
     <style>
     @import '//fonts.googleapis.com/css?family=<?php echo config_item("default_font"); ?>:300,400';
     body{
@@ -247,10 +247,11 @@ ini_set("display_errors", 1);
     <script>
     var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
-    if (chrome.app.isInstalled || localStorage.chrome == '1') {
-      document.getElementById('install-button').style.display = 'none';
-    }
+
     if(!isChrome)
+        if (chrome.app.isInstalled || localStorage.chrome == '1') {
+            document.getElementById('install-button').style.display = 'none';
+        }
       document.getElementById('install-button').style.display = 'none';
     </script>
 
