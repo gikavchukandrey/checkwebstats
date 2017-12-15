@@ -9,23 +9,23 @@
     <meta name="description" content="<?php echo ((strip_tags($SEO['description']))); ?>">
     <meta name="google-site-verification" content="<?php echo config_item("gwt"); ?>" />
     <?php if(config_item("chromeappid")){?>
-    <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/<?php echo config_item("chromeappid"); ?>">
+    <link rel="chrome-webstore-item" href="//chrome.google.com/webstore/detail/<?php echo config_item("chromeappid"); ?>">
     <?php } ?>
 
 
-      
+
     <?php if(!$image){ ?>
-     <meta property="og:image" content="<?php echo base_url(); ?>assets/images/facebook_banner.jpg">    
+     <meta property="og:image" content="<?php echo base_url(); ?>assets/images/facebook_banner.jpg">
     <?php } ?>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css?v=<?php echo config_item("version"); ?>">
-    
-    
+
+
     <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/favicon.png">
     <style>
-    @import 'https://fonts.googleapis.com/css?family=<?php echo config_item("default_font"); ?>:300,400';
+    @import '//fonts.googleapis.com/css?family=<?php echo config_item("default_font"); ?>:300,400';
     body{
       background-color: <?php echo config_item("style_body_color"); ?>;
       color: <?php echo config_item("style_main_text_color"); ?>;
@@ -45,13 +45,13 @@
 
     #mainModal .modal-header
     {
-      
+
       background: #272728 url("<?php echo config_item("background_modal"); ?>") center center no-repeat;
       background-size: cover;
-      
+
     }
     a,
-    .btn-link, 
+    .btn-link,
     a.page-link,
     .card.first .fot form button{
       color:<?php echo config_item("style_link_color"); ?> !important;
@@ -72,7 +72,7 @@
     h2.nice-title span,
     .card .features span.title,
     .btn-gradient.selected,
-    .btn-gradient:hover 
+    .btn-gradient:hover
     {
       background-color: <?php echo config_item("style_main_color"); ?> !important;
     }
@@ -88,7 +88,7 @@
     .btn-success:active,
     .btn-success:focus{
       background-color: <?php echo config_item("style_secondary_color"); ?> !important;
-    border-color: <?php echo config_item("style_secondary_color"); ?> !important; 
+    border-color: <?php echo config_item("style_secondary_color"); ?> !important;
     border-left: 8px solid <?php echo config_item("style_secondary_color"); ?> !important;
 
    }
@@ -105,7 +105,7 @@
   .footer-c h2,
   .footer-c a
   {
-    color: <?php echo config_item("style_footer_text_color"); ?> !important; 
+    color: <?php echo config_item("style_footer_text_color"); ?> !important;
   }
 
   .progress-main::-webkit-progress-value {
@@ -115,7 +115,7 @@
     -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
     -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
     -webkit-linear-gradient(left, <?php echo config_item("style_main_color"); ?>, <?php echo config_item("style_secondary_color"); ?>);
-  
+
   /* Looks great, now animating it */
   background-size: 50px 30px, 100% 100%, 100% 100%;
   -webkit-animation: move 5s linear 0 infinite;
@@ -134,7 +134,7 @@
      var csfrData = {};
      csfrData['<?php echo $this->security->get_csrf_token_name(); ?>'] = '<?php echo $this->security->get_csrf_hash(); ?>';
    </script>
-   
+
 </head>
   <body>
 
@@ -147,7 +147,7 @@ ini_set("display_errors", 1);
     <div class="hide-menu">
 
            <?php
-        if($messages = $this->session->flashdata('messages')){ 
+        if($messages = $this->session->flashdata('messages')){
           ?><?php
           foreach ($messages as $key => $value) {
             ?>
@@ -155,40 +155,36 @@ ini_set("display_errors", 1);
                 <?php echo $value['msg']; ?>
               </div>
             <?php
-          }             
+          }
           ?><?php
-        } 
+        }
         ?>
-              
-              
+
+
     <?php echo $_PAGE; ?>
     </div>
     <?php echo $_FOOTER; ?>
 
 
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />  
-    
 
-    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
 
 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
+
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/app.js?v=<?php echo config_item("version"); ?>"></script>
-    
-    <?php echo $_SCRIPTS; ?>
-    <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-   
-  
-    
+
+    <script async type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 
 
@@ -197,13 +193,16 @@ ini_set("display_errors", 1);
 
 
 
-  
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     <?php if(config_item("gcaptcha_secret")){ ?>
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src='//www.google.com/recaptcha/api.js'></script>
     <?php } ?>
 
   
