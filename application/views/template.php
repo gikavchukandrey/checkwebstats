@@ -244,16 +244,7 @@ ini_set("display_errors", 1);
     </div><!-- /.modal -->
 
 
-    <script>
-    var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 
-
-    if(!isChrome)
-        if (chrome.app.isInstalled || localStorage.chrome == '1') {
-            document.getElementById('install-button').style.display = 'none';
-        }
-      document.getElementById('install-button').style.display = 'none';
-    </script>
 
 
   </body>
