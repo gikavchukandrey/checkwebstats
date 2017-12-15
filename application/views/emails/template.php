@@ -22,7 +22,7 @@
                     <table border="0" cellpadding="0" cellspacing="0" width="700" id="emailContainer" style="background-color:#FFFFFF;border:1px #EBEBEB solid">                        
                           <tr>
                               <td align="center" style="background-color: <?php echo config_item("style_main_color"); ?>;padding: 50px;">
-                                  <img style="width:200px"  class="logo" src="<?php echo config_item("domain"); ?><?php echo config_item("logo"); ?>">
+                                  <img style="width:200px"  class="logo" src="/<?php echo config_item("logo"); ?>">
                               </td>
                           </tr>
                         <tr>

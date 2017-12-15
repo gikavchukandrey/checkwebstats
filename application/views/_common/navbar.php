@@ -21,7 +21,7 @@
             </a>
 
             <a class="navbar-brand  hidden-md-down " href="<?php echo base_url(); ?>">
-                 <img  class="logo" alt="<?php echo config_item("site_title"); ?>" title="<?php echo config_item("site_title"); ?>" src="<?php echo base_url(); ?><?php echo config_item("logo"); ?>">
+                 <img  class="logo" alt="<?php echo config_item("site_title"); ?>" title="<?php echo config_item("site_title"); ?>" src="/<?php echo config_item("logo"); ?>">
             </a>
             <?php if($page == 'home' && !is_logged()){ ?>
 <!--             <a class="animated bounceIn btn btn-secondary pull-xs-right hidden-md-down" href="<?php echo base_url(); ?><?php echo config_item("slug_login"); ?>"><?php echo __("Login/Register"); ?></a> -->
@@ -40,7 +40,7 @@
                 </form>
             <?php }else{ ?>
              <a class="navbar-brand hidden-md-up" href="<?php echo base_url(); ?>">
-                 <img  class="logo" alt="<?php echo config_item("site_title"); ?>" title="<?php echo config_item("site_title"); ?>" src="<?php echo base_url(); ?><?php echo config_item("logo"); ?>">
+                 <img  class="logo" alt="<?php echo config_item("site_title"); ?>" title="<?php echo config_item("site_title"); ?>" src="/<?php echo config_item("logo"); ?>">
             </a>
 
             <?php } ?>
