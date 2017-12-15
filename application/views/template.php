@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//assets/css/style.css?v=<?php echo config_item("version"); ?>">
+    <link rel="stylesheet" href="/assets/css/style.css?v=<?php echo config_item("version"); ?>">
 
 
-    <link rel="icon" type="image/png" href="//assets/images/favicon.png">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
     <style>
     @import '//fonts.googleapis.com/css?family=<?php echo config_item("default_font"); ?>:300,400';
     body{
@@ -182,7 +182,7 @@ ini_set("display_errors", 1);
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/app.js?v=<?php echo config_item("version"); ?>"></script>
+    <script src="/assets/js/app.js?v=<?php echo config_item("version"); ?>"></script>
 
     <script async type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
