@@ -849,7 +849,7 @@ function get_title($str){
     
     return strip_tags($title[1]);
     }*/
-    $str = mb_strtoupper($str);
+    $str = strtoupper($str);
     if(!$str)
         return "";
     $doc = new DOMDocument();

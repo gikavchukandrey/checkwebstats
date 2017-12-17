@@ -4102,7 +4102,7 @@ EOT;
      */
     function toUpper($matches)
     {
-        return mb_strtoupper($matches[0]);
+        return strtoupper($matches[0]);
     }
 
     function concatMatches($matches)

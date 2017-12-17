@@ -774,7 +774,7 @@ if (is_logged()) {
                                 </div>
                                 <div class="col-lg-8 text-muted">
                                     <?php echo __("Great, language/character encoding is specified:"); ?> <strong><i
-                                                class="zmdi zmdi-check"></i> <?php echo mb_strtoupper($site->charset); ?>
+                                                class="zmdi zmdi-check"></i> <?php echo strtoupper($site->charset); ?>
                                     </strong>
                                 </div>
                             </div>

@@ -55,7 +55,7 @@
         <!-- Logo -->
         <a href="<?php echo base_url(); ?>" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><?php echo mb_strtoupper(mb_substr(config_item("site_title"),0,3)); ?></span>
+          <span class="logo-mini"><?php echo strtoupper(mb_substr(config_item("site_title"),0,3)); ?></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><?php echo mb_substr(config_item("site_title"),0,20); ?></span>
         </a>

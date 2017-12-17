@@ -386,7 +386,7 @@ table.consistency .header
 			<div class="resume">
 				<div class="icon"><?php echo getIconPdf(4,3); ?></div>
 				<div class="text"><?php echo __("Great, language/character encoding is specified"); ?></div>
-				<div class="value"><?php echo mb_strtoupper($site->charset); ?></div>
+				<div class="value"><?php echo strtoupper($site->charset); ?></div>
 			</div>
 		<?php } ?>
 		<?php

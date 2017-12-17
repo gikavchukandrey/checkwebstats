@@ -846,7 +846,7 @@ abstract class AbstractFrameDecorator extends Frame
                 return Helpers::dec2roman($value);
 
             case "upper-roman":
-                return mb_strtoupper(Helpers::dec2roman($value));
+                return strtoupper(Helpers::dec2roman($value));
 
             case "lower-latin":
             case "lower-alpha":

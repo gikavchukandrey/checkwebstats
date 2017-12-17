@@ -262,7 +262,7 @@ class Background extends MY_Controller {
 		echo "\n";
 		echo $data['groupid']."\t".$data['dateevent'];
 		echo "\n";
-		echo "[".mb_strtoupper($data['level'])."] ".$data['log'];
+		echo "[".strtoupper($data['level'])."] ".$data['log'];
 		echo "\n";
 		if(intval(config_item("process_log")) == 2)
 		{

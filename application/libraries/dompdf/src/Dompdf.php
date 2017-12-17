@@ -746,7 +746,7 @@ class Dompdf
 
                 // Handle text nodes
                 if ($node->nodeName === "#text") {
-                    $chars = mb_strtoupper($node->nodeValue) . strtolower($node->nodeValue);
+                    $chars = strtoupper($node->nodeValue) . strtolower($node->nodeValue);
                     $canvas->register_string_subset($style->font_family, $chars);
                     continue;
                 }
@@ -777,7 +777,7 @@ class Dompdf
                     $decoded_string = preg_replace_callback("/\\\\([0-9a-fA-F]{0,6})/",
                         function ($matches) { return \Dompdf\Helpers::unichr(hexdec($matches[1])); },
                         $style->content);
-                    $chars = mb_strtoupper($style->content) . strtolower($style->content) . mb_strtoupper($decoded_string) . strtolower($decoded_string);
+                    $chars = strtoupper($style->content) . strtolower($style->content) . strtoupper($decoded_string) . strtolower($decoded_string);
                     $canvas->register_string_subset($style->font_family, $chars);
                     continue;
                 }
