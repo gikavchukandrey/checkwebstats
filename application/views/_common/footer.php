@@ -224,5 +224,14 @@ s.parentNode.insertBefore(g,s)}(document,"script"));
 
             </ul>
             </div>
-            <!-- integration YieldKit -->
+
+
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/js/bootstrap.min.js"></script>
+     <script src="/assets/js/app.js?v=<?php echo config_item("version"); ?>"></script>
+
+     <script async type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+     <!-- integration YieldKit -->
 <!--    <script type="text/javascript" async="" src="//js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb"></script>-->
