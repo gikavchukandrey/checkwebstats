@@ -98,7 +98,7 @@ s.parentNode.insertBefore(g,s)}(document,"script"));
                
                 <?php if(!is_logged())
                 {
-                    ?>/* <li class="register-login"><a class="" href="<?php echo base_url(); ?><?php echo config_item("slug_login"); ?>"><?php echo __("Login/Register"); ?></a></li> */<?php
+                    ?> <li class="register-login"><a class="" href="<?php echo base_url(); ?><?php echo config_item("slug_login"); ?>"><?php echo __("Login/Register"); ?></a></li> <?php
                 }
                 else
                 {
