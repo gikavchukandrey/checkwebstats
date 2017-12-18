@@ -96,13 +96,6 @@ s.parentNode.insertBefore(g,s)}(document,"script"));
 <div class="shortcut">
    <ul class=" ">
                
-
-                        
-                 
-
-
-               
-                
                 <?php if(!is_logged())
                 {
                     ?>/* <li class="register-login"><a class="" href="<?php echo base_url(); ?><?php echo config_item("slug_login"); ?>"><?php echo __("Login/Register"); ?></a></li> */<?php
@@ -232,4 +225,4 @@ s.parentNode.insertBefore(g,s)}(document,"script"));
             </ul>
             </div>
             <!-- integration YieldKit -->
-    <script type="text/javascript" async="" src="//js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb"></script>
+<!--    <script type="text/javascript" async="" src="//js.srvtrck.com/v1/js?api_key=7599d8cfef58c65376a858a4af02c1bb"></script>-->
