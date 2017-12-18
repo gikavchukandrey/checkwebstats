@@ -173,35 +173,9 @@ ini_set("display_errors", 1);
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" >
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <?php if(config_item("gcaptcha_secret")){ ?>
     <script src='//www.google.com/recaptcha/api.js'></script>
     <?php } ?>
-
-  
-
-
 
    <div class="modal fade" id="mainModal">
       <div class="modal-dialog" role="document">
@@ -224,22 +198,10 @@ ini_set("display_errors", 1);
 
           </div>
           <div class="modal-body">
-
-           
-
-            
             <progress class="m-t-1 progress progress-success progress-main process-value" value="0" max="100"></progress>
-            
-          </div>   
-
-       
+          </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-
-
-
-
   </body>
 </html>
