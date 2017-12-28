@@ -547,14 +547,14 @@ if (is_logged()) {
                             <i class="zmdi zmdi-share"></i> <?php echo __("Share"); ?>
                         </div>
 
-                            <form class="hidden-md-down btn-link pull-xs-right" method="POST"
-                                  action="<?php echo base_url(); ?>pdf/generate/<?php echo $site->url; ?>">
-                                <input type="hidden" value="1" name="pdf">
-                                <?php echo csrf(); ?>
-                                <button type="submit" class="  "><i
-                                            class="zmdi zmdi-collection-pdf"></i> <?php echo __("Download PDF"); ?>
-                                </button>
-                            </form>
+<!--                            <form class="hidden-md-down btn-link pull-xs-right" method="POST"-->
+<!--                                  action="--><?php //echo base_url(); ?><!--pdf/generate/--><?php //echo $site->url; ?><!--">-->
+<!--                                <input type="hidden" value="1" name="pdf">-->
+<!--                                --><?php //echo csrf(); ?>
+<!--                                <button type="submit" class="  "><i-->
+<!--                                            class="zmdi zmdi-collection-pdf"></i> --><?php //echo __("Download PDF"); ?>
+<!--                                </button>-->
+<!--                            </form>-->
 
                 </div>
 
