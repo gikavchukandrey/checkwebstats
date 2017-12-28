@@ -8,7 +8,7 @@ class Pdf extends MY_Controller {
 	{
 
 		
-		if(!is_logged())
+		/*if(!is_logged())
 		{
 			redirect(base_url().config_item("slug_login"),'location');
 			exit;
@@ -20,7 +20,12 @@ class Pdf extends MY_Controller {
 			}
 
 			
-		}
+		}*/
+
+        if(!canDownloadPdf())
+        {
+            redirect(base_url().config_item("slug_subscriptions"),'location');
+        }
 		
 		$this->load->helper('seo');
 	    
